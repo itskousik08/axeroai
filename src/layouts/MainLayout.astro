@@ -1,0 +1,118 @@
+---
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import CookieBanner from '../components/CookieBanner';
+import '../index.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "AXEROAI - AI research and products that put safety at the frontier" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | AXEROAI - AI Research & Safety</title>
+		
+		<!-- SEO -->
+		<meta property="og:title" content={`${title} | AXEROAI`} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:image" content="/og-image.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={`${title} | AXEROAI`} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content="/og-image.png" />
+		<link rel="canonical" href={Astro.url} />
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+		<script is:inline>
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+		
+			if (theme === 'light') {
+				document.documentElement.classList.remove('dark');
+			} else {
+				document.documentElement.classList.add('dark');
+			}
+			window.localStorage.setItem('theme', theme);
+		</script>
+	</head>
+	<body class="bg-white dark:bg-[#0B0F14] text-gray-900 dark:text-[#F9FAFB] font-sans selection:bg-[#4F46E5]/30 transition-colors duration-300">
+		<div class="flex flex-col min-h-screen">
+			<Header client:load />
+			<main id="main-content" class="flex-grow">
+				<slot />
+			</main>
+			<Footer />
+		</div>
+		<CookieBanner client:load />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--accent: 79, 70, 229;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: 'Inter', system-ui, sans-serif;
+		scroll-behavior: smooth;
+	}
+	
+	/* Custom scrollbar */
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+	::-webkit-scrollbar-track {
+		background: #0B0F14;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #1F2937;
+		border-radius: 4px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #374151;
+	}
+
+	/* Skip link styling */
+	.skip-link {
+		position: absolute;
+		top: -40px;
+		left: 0;
+		background: #4F46E5;
+		color: white;
+		padding: 8px;
+		z-index: 100;
+		transition: top 0.3s;
+	}
+	.skip-link:focus {
+		top: 0;
+	}
+</style>

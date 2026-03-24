@@ -1,0 +1,179 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+import { ChevronRight, Shield, Zap, BookOpen, Users } from 'lucide-react';
+import FAQ from '../components/FAQ';
+
+const newsEntries = await getCollection('news');
+const latestReleases = newsEntries.slice(0, 3).map(entry => ({
+	title: entry.data.title,
+	description: entry.data.description,
+	date: entry.data.date,
+	category: entry.data.category,
+	slug: entry.id
+}));
+
+const values = [
+	{
+		title: "AI Safety",
+		description: "We prioritize safety at every stage of development, from research to deployment.",
+		icon: Shield
+	},
+	{
+		title: "Responsible Scaling",
+		description: "Our scaling laws are guided by rigorous testing and ethical considerations.",
+		icon: Zap
+	},
+	{
+		title: "Alignment Research",
+		icon: Users,
+		description: "Ensuring AI systems act in accordance with human values and intentions."
+	},
+	{
+		title: "Education Initiatives",
+		icon: BookOpen,
+		description: "Empowering the next generation of AI researchers and developers."
+	}
+];
+
+const faqItems = [
+  {
+    question: "What is AXEROAI?",
+    answer: "AXEROAI is an AI safety and research company. We build reliable, interpretable, and steerable AI systems to ensure the future of intelligence benefits humanity."
+  },
+  {
+    question: "How does it work?",
+    answer: "We use a combination of technical innovation, including Constitutional AI and mechanistic interpretability, to build models that are safe by design."
+  },
+  {
+    question: "Is it free?",
+    answer: "We offer free access to our flagship models through our web interface and mobile apps, with premium tiers available for power users and enterprises."
+  },
+  {
+    question: "Is my data stored?",
+    answer: "We prioritize privacy and data security. We do not use your personal data to train our models without explicit consent, and we offer robust data management tools."
+  }
+];
+---
+
+<MainLayout title="Home" description="AXEROAI is an AI safety and research company. We build reliable, interpretable, and steerable AI systems to ensure the future of intelligence benefits humanity.">
+	<!-- Skip Links -->
+	<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-brand">Skip to main content</a>
+
+	<!-- Hero Section -->
+	<section class="relative pt-32 pb-20 overflow-hidden">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+			<div class="max-w-3xl">
+				<h1 class="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 dark:text-[#F9FAFB] mb-6 leading-tight">
+					AI research and products that put <span class="text-[#4F46E5]">safety</span> at the frontier
+				</h1>
+				<p class="text-xl text-gray-600 dark:text-[#9CA3AF] mb-10 leading-relaxed">
+					AXEROAI is an AI safety and research company. We build reliable, interpretable, and steerable AI systems to ensure the future of intelligence benefits humanity.
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4">
+					<a href="/get-started" class="btn-primary">
+						Get Started
+					</a>
+					<a href="/news" class="btn-secondary group">
+						Explore News
+						<ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+					</a>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Subtle background element -->
+		<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[800px] h-[800px] bg-[#4F46E5]/5 rounded-full blur-[120px] pointer-events-none"></div>
+	</section>
+
+	<!-- Latest Releases -->
+	<section class="py-24">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between items-end mb-12">
+				<div>
+					<h2 class="text-3xl font-bold text-gray-900 dark:text-[#F9FAFB] mb-4">Latest Releases</h2>
+					<p class="text-gray-600 dark:text-[#9CA3AF]">The frontier of our research and product development.</p>
+				</div>
+				<a href="/news" class="hidden md:flex items-center text-sm font-medium text-gray-600 dark:text-[#9CA3AF] hover:text-gray-900 dark:hover:text-[#F9FAFB] transition-colors">
+					View all releases <ChevronRight className="ml-1 w-4 h-4" />
+				</a>
+			</div>
+			
+			<div class="grid md:grid-cols-3 gap-8">
+				{latestReleases.map((release) => (
+					<article class="card-premium group flex flex-col">
+						<div class="text-xs font-bold text-[#4F46E5] uppercase tracking-widest mb-4">{release.category}</div>
+						<h3 class="text-xl font-bold text-gray-900 dark:text-[#F9FAFB] mb-3 group-hover:text-[#4F46E5] transition-colors">{release.title}</h3>
+						<p class="text-gray-600 dark:text-[#9CA3AF] text-sm mb-6 leading-relaxed">{release.description}</p>
+						<div class="flex justify-between items-center mt-auto">
+							<span class="text-xs text-gray-500 dark:text-[#6B7280]">{release.date}</span>
+							<a href={`/news/${release.slug}`} class="text-sm font-semibold text-gray-900 dark:text-[#F9FAFB] flex items-center group-hover:translate-x-1 transition-transform">
+								Read more <ChevronRight className="ml-1 w-4 h-4" />
+							</a>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Vision Section -->
+	<section class="py-24 bg-gray-50 dark:bg-[#111827]/30">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center max-w-3xl mx-auto mb-16">
+				<h2 class="text-3xl font-bold text-gray-900 dark:text-[#F9FAFB] mb-6">Our Vision</h2>
+				<p class="text-lg text-gray-600 dark:text-[#9CA3AF]">
+					We believe that the path to beneficial AI is through rigorous research, safety-first engineering, and open collaboration.
+				</p>
+			</div>
+			
+			<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+				{values.map((value) => (
+					<div class="text-center p-6">
+						<div class="w-12 h-12 bg-[#4F46E5]/10 rounded-xl flex items-center justify-center mx-auto mb-6">
+							<value.icon className="w-6 h-6 text-[#4F46E5]" aria-hidden="true" />
+						</div>
+						<h3 class="text-lg font-bold text-gray-900 dark:text-[#F9FAFB] mb-3">{value.title}</h3>
+						<p class="text-sm text-gray-600 dark:text-[#9CA3AF] leading-relaxed">{value.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- FAQ Section -->
+	<section class="py-24 bg-gray-50 dark:bg-[#111827]/30 border-t border-gray-200 dark:border-[#1F2937]">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-16">
+				<h2 class="text-3xl font-bold text-gray-900 dark:text-[#F9FAFB]">Frequently Asked Questions</h2>
+			</div>
+			<FAQ client:load items={faqItems} />
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="py-24">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="bg-[#4F46E5] rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+				<div class="relative z-10">
+					<h2 class="text-4xl md:text-5xl font-bold text-white mb-8">Build with AXEROAI</h2>
+					<p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+						Join us in our mission to build safe, powerful AI that benefits everyone.
+					</p>
+					<div class="flex flex-col sm:flex-row gap-4 justify-center">
+						<a href="/get-started" class="px-8 py-4 bg-white text-[#4F46E5] font-bold rounded-lg hover:bg-gray-100 transition-colors">
+							Join the mission
+						</a>
+						<a href="/docs" class="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-colors backdrop-blur-sm">
+							Read Documentation
+						</a>
+					</div>
+				</div>
+				
+				<!-- Decorative circles -->
+				<div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+				<div class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-black/10 rounded-full blur-3xl"></div>
+			</div>
+		</div>
+	</section>
+</MainLayout>
