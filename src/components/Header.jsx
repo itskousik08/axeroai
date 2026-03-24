@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +52,7 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center">
             <a href="/" className="flex items-center space-x-2">
-              <img src="/logo.png" alt="AXEROAI Logo" className="h-8 w-auto" referrerPolicy="no-referrer" />
+              <img src="public/logo.png" alt="AXEROAI" className="h-8 w-auto" referrerPolicy="no-referrer" />
               <span className="text-xl font-bold tracking-tighter text-gray-900 dark:text-[#F9FAFB]">
                 AXEROAI
               </span>
