@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Cpu } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const Header = () => {
@@ -23,18 +23,20 @@ const Header = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-5 max-w-[1200px] mx-auto transition-all duration-300 font-['Inter'] antialiased tracking-tight ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-5 max-w-[1200px] mx-auto transition-all duration-300 font-sans antialiased tracking-tight ${
       scrolled 
-        ? 'bg-white/80 backdrop-blur-[20px] border-b border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.05)]' 
+        ? 'bg-white/80 backdrop-blur-[24px] border-b border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.03)]' 
         : 'bg-transparent border-transparent'
     }`}>
-      <div className="text-2xl font-black text-black tracking-tighter">AxeroAI</div>
+      <a href="/" className="text-xl font-extrabold text-black tracking-tighter font-display">
+        Axero<span className="text-gray-400">AI</span>
+      </a>
       
-      <div className="hidden md:flex items-center gap-8">
+      <div className="hidden md:flex items-center gap-10">
         {navItems.map((item) => (
           <a 
             key={item.name}
-            className="text-gray-600 font-medium hover:text-black transition-colors duration-300" 
+            className="text-[13px] text-gray-500 font-medium hover:text-black transition-colors duration-300" 
             href={item.href}
           >
             {item.name}
@@ -42,43 +44,47 @@ const Header = () => {
         ))}
       </div>
 
-      <button className="bg-black text-white px-6 py-2 rounded-lg font-semibold active:scale-95 transition-transform hover:bg-black/90">
-        Contact Us
-      </button>
-
-      {/* Mobile menu button */}
-      <div className="md:hidden flex items-center">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="text-gray-600 hover:text-black focus:outline-none"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+      <div className="flex items-center gap-4">
+        <button className="hidden sm:block bg-black text-white px-5 py-2 rounded-lg text-[13px] font-semibold active:scale-95 transition-all hover:bg-black/90">
+          Get Access <ChevronRight size={14} className="inline-block ml-1" />
         </button>
+
+        {/* Mobile menu button */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-gray-600 hover:text-black focus:outline-none"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="absolute top-full left-0 right-0 mt-4 mx-8 bg-white border border-gray-100 shadow-xl rounded-2xl p-6 md:hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 right-0 mt-4 mx-8 bg-white border border-black/5 shadow-2xl rounded-2xl p-8 md:hidden"
           >
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-6">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-lg font-medium text-gray-600 hover:text-black"
+                  className="text-lg font-bold text-gray-400 hover:text-black transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <button className="w-full bg-black text-white py-3 rounded-lg font-semibold mt-4">
-                Contact Us
-              </button>
+              <div className="pt-6 border-t border-black/5">
+                <button className="w-full bg-black text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2">
+                  Get Access <ChevronRight size={18} />
+                </button>
+              </div>
             </div>
           </motion.div>
         )}

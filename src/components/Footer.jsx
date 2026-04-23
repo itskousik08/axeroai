@@ -53,16 +53,11 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
-            <a href="/" className="flex items-center space-x-2 group mb-6">
-              <div className="h-8 w-8 bg-black rounded-lg flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
-                <Cpu className="text-white" size={18} />
-              </div>
-              <span className="text-xl font-bold tracking-tighter text-black">
-                AXEROAI
-              </span>
+            <a href="/" className="text-xl font-extrabold text-black tracking-tighter font-display mb-6 block">
+              Axero<span className="text-gray-400">AI</span>
             </a>
-            <p className="text-sm text-gray-500 max-w-xs leading-relaxed">
-              Building the next generation of high-performance AI systems and innovation architectures.
+            <p className="text-sm text-gray-400 max-w-xs leading-relaxed font-light">
+              Building AI systems that actually work — for teams who move fast and ship what matters.
             </p>
           </div>
           {footerLinks.map((section) => (
