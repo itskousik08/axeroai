@@ -1,179 +1,241 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import { getCollection } from 'astro:content';
-import { ChevronRight, Shield, Zap, BookOpen, Users } from 'lucide-react';
-import FAQ from '../components/FAQ';
-
-const newsEntries = await getCollection('news');
-const latestReleases = newsEntries.slice(0, 3).map(entry => ({
-	title: entry.data.title,
-	description: entry.data.description,
-	date: entry.data.date,
-	category: entry.data.category,
-	slug: entry.id
-}));
-
-const values = [
-	{
-		title: "AI Safety",
-		description: "We prioritize safety at every stage of development, from research to deployment.",
-		icon: Shield
-	},
-	{
-		title: "Responsible Scaling",
-		description: "Our scaling laws are guided by rigorous testing and ethical considerations.",
-		icon: Zap
-	},
-	{
-		title: "Alignment Research",
-		icon: Users,
-		description: "Ensuring AI systems act in accordance with human values and intentions."
-	},
-	{
-		title: "Education Initiatives",
-		icon: BookOpen,
-		description: "Empowering the next generation of AI researchers and developers."
-	}
-];
-
-const faqItems = [
-  {
-    question: "What is AXEROAI?",
-    answer: "AXEROAI is an AI safety and research company. We build reliable, interpretable, and steerable AI systems to ensure the future of intelligence benefits humanity."
-  },
-  {
-    question: "How does it work?",
-    answer: "We use a combination of technical innovation, including Constitutional AI and mechanistic interpretability, to build models that are safe by design."
-  },
-  {
-    question: "Is it free?",
-    answer: "We offer free access to our flagship models through our web interface and mobile apps, with premium tiers available for power users and enterprises."
-  },
-  {
-    question: "Is my data stored?",
-    answer: "We prioritize privacy and data security. We do not use your personal data to train our models without explicit consent, and we offer robust data management tools."
-  }
-];
 ---
 
-<MainLayout title="Home" description="AXEROAI is an AI safety and research company. We build reliable, interpretable, and steerable AI systems to ensure the future of intelligence benefits humanity.">
-	<!-- Skip Links -->
-	<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-brand">Skip to main content</a>
-
-	<!-- Hero Section -->
-	<section class="relative pt-32 pb-20 overflow-hidden">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-			<div class="max-w-3xl">
-				<h1 class="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 dark:text-[#F9FAFB] mb-6 leading-tight">
-					AI research and products that put <span class="text-[#4F46E5]">safety</span> at the frontier
-				</h1>
-				<p class="text-xl text-gray-600 dark:text-[#9CA3AF] mb-10 leading-relaxed">
-					AXEROAI is an AI safety and research company. We build reliable, interpretable, and steerable AI systems to ensure the future of intelligence benefits humanity.
+<MainLayout title="Engineering the Intelligence of Tomorrow" description="AxeroAI builds high-performance AI products and innovation systems for the next generation of digital infrastructure.">
+	<main class="max-w-[1200px] mx-auto px-8">
+		<!-- Hero Section -->
+		<section class="min-h-screen flex flex-col md:flex-row items-center justify-center pt-24 gap-12">
+			<div class="flex-1 space-y-8">
+				<span class="label-caps">Pioneering the Digital Frontier</span>
+				<h1 class="text-7xl font-bold text-white leading-tight font-sans tracking-tight">Engineering the Intelligence of Tomorrow</h1>
+				<p class="text-xl text-on-surface-variant max-w-xl font-sans">
+					AxeroAI builds high-performance AI products and innovation systems for the next generation of digital infrastructure.
 				</p>
-				<div class="flex flex-col sm:flex-row gap-4">
-					<a href="/get-started" class="btn-primary">
-						Get Started
-					</a>
-					<a href="/news" class="btn-secondary group">
-						Explore News
-						<ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-					</a>
+				<div class="flex items-center gap-4 pt-4">
+					<button class="bg-[#2E5BFF] text-white px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
+						Explore Ventures
+						<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+					</button>
+					<button class="border border-outline-variant text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/5 transition-colors">
+						Get in Touch
+					</button>
 				</div>
 			</div>
-		</div>
-		
-		<!-- Subtle background element -->
-		<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[800px] h-[800px] bg-[#4F46E5]/5 rounded-full blur-[120px] pointer-events-none"></div>
-	</section>
-
-	<!-- Latest Releases -->
-	<section class="py-24">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="flex justify-between items-end mb-12">
-				<div>
-					<h2 class="text-3xl font-bold text-gray-900 dark:text-[#F9FAFB] mb-4">Latest Releases</h2>
-					<p class="text-gray-600 dark:text-[#9CA3AF]">The frontier of our research and product development.</p>
+			<div class="flex-1 w-full relative">
+				<div class="aspect-square glass-card rounded-2xl overflow-hidden relative group">
+					<img 
+						alt="AI Visualization" 
+						class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" 
+						src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAqal5LB0RfaUJMHAFQvr10iYw_NnUMjfyTY4XapF4JINzNWSeGltLAhzB0txHsR7VzV7NZSHy5k-QTMyv4xndHzd2EmmGYvpaGKQRtz-dKij95FRxAUKxLZVzt07DinYyRsk2YulFDZExdGvFk9qWU05WOQecI8tQlUN1x1UlenLS39RpuZ4sj7M9IuQxPq8UwhXTxQ6WfoulVipJgghRzEZUOUZOMzJFLNrQ19pYNowuwFIX1kpx8uA9kxjD90s3ENBE4OJ47qs"
+						referrerpolicy="no-referrer"
+					/>
+					<div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent opacity-60"></div>
 				</div>
-				<a href="/news" class="hidden md:flex items-center text-sm font-medium text-gray-600 dark:text-[#9CA3AF] hover:text-gray-900 dark:hover:text-[#F9FAFB] transition-colors">
-					View all releases <ChevronRight className="ml-1 w-4 h-4" />
-				</a>
+				<!-- Decorative Elements -->
+				<div class="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-[#2E5BFF]/30"></div>
+				<div class="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-[#2E5BFF]/30"></div>
 			</div>
-			
-			<div class="grid md:grid-cols-3 gap-8">
-				{latestReleases.map((release) => (
-					<article class="card-premium group flex flex-col">
-						<div class="text-xs font-bold text-[#4F46E5] uppercase tracking-widest mb-4">{release.category}</div>
-						<h3 class="text-xl font-bold text-gray-900 dark:text-[#F9FAFB] mb-3 group-hover:text-[#4F46E5] transition-colors">{release.title}</h3>
-						<p class="text-gray-600 dark:text-[#9CA3AF] text-sm mb-6 leading-relaxed">{release.description}</p>
-						<div class="flex justify-between items-center mt-auto">
-							<span class="text-xs text-gray-500 dark:text-[#6B7280]">{release.date}</span>
-							<a href={`/news/${release.slug}`} class="text-sm font-semibold text-gray-900 dark:text-[#F9FAFB] flex items-center group-hover:translate-x-1 transition-transform">
-								Read more <ChevronRight className="ml-1 w-4 h-4" />
-							</a>
-						</div>
-					</article>
-				))}
-			</div>
-		</div>
-	</section>
+		</section>
 
-	<!-- Vision Section -->
-	<section class="py-24 bg-gray-50 dark:bg-[#111827]/30">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center max-w-3xl mx-auto mb-16">
-				<h2 class="text-3xl font-bold text-gray-900 dark:text-[#F9FAFB] mb-6">Our Vision</h2>
-				<p class="text-lg text-gray-600 dark:text-[#9CA3AF]">
-					We believe that the path to beneficial AI is through rigorous research, safety-first engineering, and open collaboration.
-				</p>
-			</div>
-			
-			<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-				{values.map((value) => (
-					<div class="text-center p-6">
-						<div class="w-12 h-12 bg-[#4F46E5]/10 rounded-xl flex items-center justify-center mx-auto mb-6">
-							<value.icon className="w-6 h-6 text-[#4F46E5]" aria-hidden="true" />
-						</div>
-						<h3 class="text-lg font-bold text-gray-900 dark:text-[#F9FAFB] mb-3">{value.title}</h3>
-						<p class="text-sm text-gray-600 dark:text-[#9CA3AF] leading-relaxed">{value.description}</p>
-					</div>
-				))}
-			</div>
-		</div>
-	</section>
+		<!-- Trust Statement -->
+		<section class="py-20 border-y border-white/5 text-center">
+			<h2 class="text-5xl font-semibold text-white max-w-4xl mx-auto leading-tight font-sans">
+				A serious approach to artificial intelligence. <span class="text-on-surface-variant">We don't just theorize; we build.</span>
+			</h2>
+		</section>
 
-	<!-- FAQ Section -->
-	<section class="py-24 bg-gray-50 dark:bg-[#111827]/30 border-t border-gray-200 dark:border-[#1F2937]">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center mb-16">
-				<h2 class="text-3xl font-bold text-gray-900 dark:text-[#F9FAFB]">Frequently Asked Questions</h2>
+		<!-- What We Build (Bento Grid) -->
+		<section class="py-32">
+			<div class="flex justify-between items-end mb-16">
+				<div class="space-y-2">
+					<span class="label-caps">CORE CAPABILITIES</span>
+					<h3 class="text-3xl font-bold text-white">What We Build</h3>
+				</div>
 			</div>
-			<FAQ client:load items={faqItems} />
-		</div>
-	</section>
-
-	<!-- CTA Section -->
-	<section class="py-24">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="bg-[#4F46E5] rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
-				<div class="relative z-10">
-					<h2 class="text-4xl md:text-5xl font-bold text-white mb-8">Build with AXEROAI</h2>
-					<p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-						Join us in our mission to build safe, powerful AI that benefits everyone.
-					</p>
-					<div class="flex flex-col sm:flex-row gap-4 justify-center">
-						<a href="/get-started" class="px-8 py-4 bg-white text-[#4F46E5] font-bold rounded-lg hover:bg-gray-100 transition-colors">
-							Join the mission
-						</a>
-						<a href="/docs" class="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-colors backdrop-blur-sm">
-							Read Documentation
-						</a>
+			<div class="grid grid-cols-1 md:grid-cols-12 gap-6 min-h-[600px]">
+				<div class="md:col-span-8 glass-card rounded-xl p-10 flex flex-col justify-end relative overflow-hidden group">
+					<img 
+						alt="AI Products" 
+						class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-1000" 
+						src="https://lh3.googleusercontent.com/aida-public/AB6AXuAesWjoEvXRoKI5DJFeV1XZtjJ3oXY7z-kRBTGSB-GOcvp8gcxxHRMQp8Vp5mn_3GFZn7VPp9Bvv9XWzcGisOSRl3o8DS5nITiJI72wtExgwX8SI-y1RBgYifUrhaC1wU3df8BNFouVTmCDifI9it0Nb3e0wengTumkjks54kqRWkVo7chmNsVc7vnFZyi1k2r-UtN1SGRZGrBuBAaMJNXpBzxZ4WPw4DpILb37UbYNWX6QWKE61vrT14TuGVw0cza68z-23DWovTM"
+						referrerpolicy="no-referrer"
+					/>
+					<div class="relative z-10">
+						<span class="material-symbols-outlined text-[#2E5BFF] mb-4 text-4xl">neurology</span>
+						<h4 class="text-2xl font-bold text-white mb-2">AI Products</h4>
+						<p class="text-on-surface-variant max-w-sm">Autonomous agents and decision engines designed for complex enterprise workflows.</p>
 					</div>
 				</div>
-				
-				<!-- Decorative circles -->
-				<div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-				<div class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-black/10 rounded-full blur-3xl"></div>
+				<div class="md:col-span-4 glass-card rounded-xl p-10 flex flex-col justify-end group">
+					<span class="material-symbols-outlined text-[#2E5BFF] mb-4 text-4xl">settings_input_component</span>
+					<h4 class="text-2xl font-bold text-white mb-2">Automation Systems</h4>
+					<p class="text-on-surface-variant">High-performance robotic process orchestration and industrial intelligence.</p>
+				</div>
+				<div class="md:col-span-4 glass-card rounded-xl p-10 flex flex-col justify-end group">
+					<span class="material-symbols-outlined text-[#2E5BFF] mb-4 text-4xl">language</span>
+					<h4 class="text-2xl font-bold text-white mb-2">Web Platforms</h4>
+					<p class="text-on-surface-variant">Scalable cloud architectures built for the next generation of web interaction.</p>
+				</div>
+				<div class="md:col-span-8 glass-card rounded-xl p-10 flex flex-col justify-end relative overflow-hidden group">
+					<img 
+						alt="Experimental Tools" 
+						class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-1000" 
+						src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxunu31PxjZaSUT8boOithAebf2Z1CUc4cUrwz9zYWntmiLkhMpFRzR8RcB1gf0v5EiKCBipAAb_ppHScoMehHUCmkmgpHjeETCe3AD8YJ-yTTCw5zlOn1vsyKRC8thOvHI8p5W7kwUPzs3y2nqlRqAudfkMUfQAxLpEKREHtecqCPHAZlSyyIvq-4ZfjxPIwb8Ux_T86j_kpF73g_xkNVfGI5J-Bt1rt_pc4DgeevlWnTSYcXqLmRx7lo5Ew4AUM_pGJ_I1BxZas"
+						referrerpolicy="no-referrer"
+					/>
+					<div class="relative z-10">
+						<span class="material-symbols-outlined text-[#2E5BFF] mb-4 text-4xl">biotech</span>
+						<h4 class="text-2xl font-bold text-white mb-2">Experimental Tools</h4>
+						<p class="text-on-surface-variant max-w-md">Pushing the boundaries of human-computer interaction through R&D.</p>
+					</div>
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+
+		<!-- Featured Products -->
+		<section class="py-32">
+			<div class="space-y-2 mb-16">
+				<span class="label-caps">PORTFOLIO</span>
+				<h3 class="text-3xl font-bold text-white">Featured Products</h3>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<!-- Product 1 -->
+				<div class="flex flex-col">
+					<div class="aspect-video glass-card rounded-xl mb-6 overflow-hidden relative">
+						<img 
+							alt="Lumina AI" 
+							class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+							src="https://lh3.googleusercontent.com/aida-public/AB6AXuCskvBLK2GqqXhI-JBQ6aX9EQ3BHbHZAKHhkkK6IP-M8CE0n0Ykvw4pSMO-_6-aVa9TnEulJplZGqJS17rJVgLx2NNlysKS8e8XGfjYlnub4G8EvjFHW5PW9n88xhcBrhpt5F9Hmic46bIIn8oP91Z1Su33ycJ9m0b64P8qrp4lGL2keubnCkuON3UmTJchpqkWRfNEqVx-MTaXn4GbqzDEUQLoZzk8YX_g8NC0YA1FgowIhSMWALQN1NykyHM5GLb4s0JD-3dUfII"
+							referrerpolicy="no-referrer"
+						/>
+						<div class="absolute top-4 right-4 bg-[#2E5BFF]/20 text-[#2E5BFF] border border-[#2E5BFF]/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+							Live
+						</div>
+					</div>
+					<h4 class="text-2xl font-bold text-white mb-2">Lumina AI</h4>
+					<p class="text-on-surface-variant mb-6 flex-grow">Advanced neural visualization for complex data structures and pattern recognition.</p>
+					<button class="w-full py-4 border border-outline-variant text-white font-semibold hover:bg-[#2E5BFF] hover:border-[#2E5BFF] transition-all flex justify-center items-center gap-2">
+						View Product <span class="material-symbols-outlined text-[18px]">north_east</span>
+					</button>
+				</div>
+				<!-- Product 2 -->
+				<div class="flex flex-col">
+					<div class="aspect-video glass-card rounded-xl mb-6 overflow-hidden relative">
+						<img 
+							alt="Nexus Core" 
+							class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+							src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5m8vEdFZKj2GD4qJyx3dJ8fnnlQHqkYGXyOwRW5bj4r-o3pI7lE0LkAQ2G8pdVkAmHMxmSHSshu6eXhIPuq8bzl7pPdDfNatlymaef_uSPD19SrpXT7qWjzuk6RfTzAThUeJnayQJwZKUn4ITtcNEIgMfH4qlCNe4Sg2oBgIanvMpOsrYPCmZFFkl1Fd1-BZxJsO-yxAvAUeF9gfPBUlfTmTfL5pXnpbzk55ERHhcYAU1I3aQKMCrdF0hTpvoqkjVTPs79y9jjVU"
+							referrerpolicy="no-referrer"
+						/>
+						<div class="absolute top-4 right-4 bg-secondary/20 text-secondary border border-secondary/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+							Beta
+						</div>
+					</div>
+					<h4 class="text-2xl font-bold text-white mb-2">Nexus Core</h4>
+					<p class="text-on-surface-variant mb-6 flex-grow">The decentralized backbone for multi-agent collaboration systems.</p>
+					<button class="w-full py-4 border border-outline-variant text-white font-semibold hover:bg-[#2E5BFF] hover:border-[#2E5BFF] transition-all flex justify-center items-center gap-2">
+						View Product <span class="material-symbols-outlined text-[18px]">north_east</span>
+					</button>
+				</div>
+				<!-- Product 3 -->
+				<div class="flex flex-col">
+					<div class="aspect-video glass-card rounded-xl mb-6 overflow-hidden relative">
+						<img 
+							alt="Aether" 
+							class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+							src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnIrmzufjFXkKqIGYkQq7gKa9B4MA4ZVvSuty7cG1hHJEOxzjAHCXp4B5_aZAnT6hsPC3LRi61KcEj_0WPl4PEbkilzL4xDHv4PBs5iLy7gOkjRRKNWW4NnpnfvIT53llRP6d6z5W0eFn988LWPih7r2qnKeonzx6KSoNkXhLsHT-VymWSojOMPqsspbvm9Fzvbfq8jc15kmjEVE2JbUwSynCdMke6LvGW52UjJ54CSaMdlVjXLwq6hDybADA6TlAUBrKVCxjC_fg"
+							referrerpolicy="no-referrer"
+						/>
+						<div class="absolute top-4 right-4 bg-white/10 text-white/50 border border-white/10 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+							Building
+						</div>
+					</div>
+					<h4 class="text-2xl font-bold text-white mb-2">Aether</h4>
+					<p class="text-on-surface-variant mb-6 flex-grow">Next-gen language interface for high-stakes enterprise decision making.</p>
+					<button class="w-full py-4 border border-outline-variant text-white font-semibold hover:bg-[#2E5BFF] hover:border-[#2E5BFF] transition-all flex justify-center items-center gap-2">
+						View Product <span class="material-symbols-outlined text-[18px]">north_east</span>
+					</button>
+				</div>
+			</div>
+		</section>
+
+		<!-- Why AxeroAI -->
+		<section class="py-32 bg-surface/50 -mx-8 px-8">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+				<div class="space-y-4">
+					<div class="w-12 h-12 rounded-lg bg-[#2E5BFF]/10 border border-[#2E5BFF]/20 flex items-center justify-center text-[#2E5BFF]">
+						<span class="material-symbols-outlined">psychology</span>
+					</div>
+					<h5 class="text-xl font-bold text-white">AI-first thinking</h5>
+					<p class="text-on-surface-variant text-sm">We architect every solution starting from the capabilities of modern machine learning.</p>
+				</div>
+				<div class="space-y-4">
+					<div class="w-12 h-12 rounded-lg bg-[#2E5BFF]/10 border border-[#2E5BFF]/20 flex items-center justify-center text-[#2E5BFF]">
+						<span class="material-symbols-outlined">construction</span>
+					</div>
+					<h5 class="text-xl font-bold text-white">Practical execution</h5>
+					<p class="text-on-surface-variant text-sm">Beyond theory, we focus on deployment readiness and production-grade stability.</p>
+				</div>
+				<div class="space-y-4">
+					<div class="w-12 h-12 rounded-lg bg-[#2E5BFF]/10 border border-[#2E5BFF]/20 flex items-center justify-center text-[#2E5BFF]">
+						<span class="material-symbols-outlined">layers</span>
+					</div>
+					<h5 class="text-xl font-bold text-white">Modern product systems</h5>
+					<p class="text-on-surface-variant text-sm">Clean code, robust architectures, and intuitive user experiences for complex tools.</p>
+				</div>
+				<div class="space-y-4">
+					<div class="w-12 h-12 rounded-lg bg-[#2E5BFF]/10 border border-[#2E5BFF]/20 flex items-center justify-center text-[#2E5BFF]">
+						<span class="material-symbols-outlined">speed</span>
+					</div>
+					<h5 class="text-xl font-bold text-white">Fast-moving innovation</h5>
+					<p class="text-on-surface-variant text-sm">We iterate at the speed of the AI field, ensuring your products never fall behind.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Vision -->
+		<section class="py-32 text-center max-w-3xl mx-auto">
+			<span class="label-caps mb-4 block">OUR MISSION</span>
+			<h2 class="text-5xl font-semibold text-white italic font-sans">
+				"Our mission is to bridge the gap between AI potential and practical reality."
+			</h2>
+		</section>
+
+		<!-- Process -->
+		<section class="py-32">
+			<div class="space-y-2 mb-20 text-center">
+				<span class="label-caps">METHODOLOGY</span>
+				<h3 class="text-3xl font-bold text-white">Engineering Lifecycle</h3>
+			</div>
+			<div class="relative flex flex-col md:flex-row justify-between gap-8 md:gap-0">
+				<!-- Timeline Line -->
+				<div class="absolute top-1/2 left-0 right-0 h-px bg-white/10 hidden md:block"></div>
+				<!-- Step 1 -->
+				<div class="relative z-10 flex flex-col items-center md:w-1/4">
+					<div class="w-16 h-16 rounded-full glass-card border border-[#2E5BFF]/40 flex items-center justify-center text-white font-bold text-xl mb-6 bg-[#0A0A0A]">01</div>
+					<h6 class="text-lg font-bold text-white mb-2">Think</h6>
+					<p class="text-on-surface-variant text-sm text-center px-4">Deep research and feasibility analysis for every problem.</p>
+				</div>
+				<!-- Step 2 -->
+				<div class="relative z-10 flex flex-col items-center md:w-1/4">
+					<div class="w-16 h-16 rounded-full glass-card border border-white/10 flex items-center justify-center text-white font-bold text-xl mb-6 bg-[#0A0A0A]">02</div>
+					<h6 class="text-lg font-bold text-white mb-2">Build</h6>
+					<p class="text-on-surface-variant text-sm text-center px-4">Rapid prototyping and high-fidelity product engineering.</p>
+				</div>
+				<!-- Step 3 -->
+				<div class="relative z-10 flex flex-col items-center md:w-1/4">
+					<div class="w-16 h-16 rounded-full glass-card border border-white/10 flex items-center justify-center text-white font-bold text-xl mb-6 bg-[#0A0A0A]">03</div>
+					<h6 class="text-lg font-bold text-white mb-2">Ship</h6>
+					<p class="text-on-surface-variant text-sm text-center px-4">Production deployment and continuous infrastructure monitoring.</p>
+				</div>
+				<!-- Step 4 -->
+				<div class="relative z-10 flex flex-col items-center md:w-1/4">
+					<div class="w-16 h-16 rounded-full glass-card border border-white/10 flex items-center justify-center text-white font-bold text-xl mb-6 bg-[#0A0A0A]">04</div>
+					<h6 class="text-lg font-bold text-white mb-2">Scale</h6>
+					<p class="text-on-surface-variant text-sm text-center px-4">Exponential growth through algorithmic optimization.</p>
+				</div>
+			</div>
+		</section>
+	</main>
 </MainLayout>

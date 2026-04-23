@@ -36,28 +36,10 @@ const { title, description = "AXEROAI - AI research and products that put safety
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-		<script is:inline>
-			const theme = (() => {
-				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-					return localStorage.getItem('theme');
-				}
-				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-					return 'dark';
-				}
-				return 'light';
-			})();
-		
-			if (theme === 'light') {
-				document.documentElement.classList.remove('dark');
-			} else {
-				document.documentElement.classList.add('dark');
-			}
-			window.localStorage.setItem('theme', theme);
-		</script>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
 	</head>
-	<body class="bg-white dark:bg-[#0B0F14] text-gray-900 dark:text-[#F9FAFB] font-sans selection:bg-[#4F46E5]/30 transition-colors duration-300">
+	<body class="bg-[#0A0A0A] text-[#e5e2e1] font-sans antialiased overflow-x-hidden">
 		<div class="flex flex-col min-h-screen">
 			<Header client:load />
 			<main id="main-content" class="flex-grow">
@@ -70,17 +52,6 @@ const { title, description = "AXEROAI - AI research and products that put safety
 </html>
 
 <style is:global>
-	:root {
-		--accent: 79, 70, 229;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
 	html {
 		font-family: 'Inter', system-ui, sans-serif;
 		scroll-behavior: smooth;
@@ -91,28 +62,13 @@ const { title, description = "AXEROAI - AI research and products that put safety
 		width: 8px;
 	}
 	::-webkit-scrollbar-track {
-		background: #0B0F14;
+		background: #0A0A0A;
 	}
 	::-webkit-scrollbar-thumb {
-		background: #1F2937;
+		background: #1C1B1B;
 		border-radius: 4px;
 	}
 	::-webkit-scrollbar-thumb:hover {
-		background: #374151;
-	}
-
-	/* Skip link styling */
-	.skip-link {
-		position: absolute;
-		top: -40px;
-		left: 0;
-		background: #4F46E5;
-		color: white;
-		padding: 8px;
-		z-index: 100;
-		transition: top 0.3s;
-	}
-	.skip-link:focus {
-		top: 0;
+		background: #2E5BFF44;
 	}
 </style>
