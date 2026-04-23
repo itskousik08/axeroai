@@ -1,0 +1,79 @@
+---
+import { getCollection, render } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  return products.map(product => ({
+    params: { slug: product.id },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const { Content } = await render(product);
+---
+
+<MainLayout title={product.data.title} description={product.data.description}>
+  <div class="pt-32 pb-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-20 items-start">
+        <!-- Info -->
+        <div class="space-y-12">
+          <div class="space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-primary text-xs font-mono uppercase tracking-widest">
+              {product.data.status}
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black premium-gradient-text leading-none tracking-tighter">
+              {product.data.title}
+            </h1>
+            <p class="text-2xl text-on-surface-variant font-light leading-relaxed">
+              {product.data.description}
+            </p>
+          </div>
+
+          <div class="flex gap-4">
+            {product.data.link && (
+               <a href={product.data.link} target="_blank" class="premium-button premium-button-primary">
+                Experience {product.data.title} <ArrowUpRight size={18} />
+              </a>
+            )}
+            <a href="/products" class="premium-button premium-button-secondary">
+              Back to Stack
+            </a>
+          </div>
+
+          <div class="pt-12 border-t border-outline grid grid-cols-2 gap-8">
+            <div>
+              <span class="block text-[10px] font-mono text-on-surface-variant uppercase tracking-widest mb-4">Core Technology</span>
+              <div class="flex flex-wrap gap-2">
+                 {product.data.tech.map(t => (
+                  <span class="text-[9px] font-mono px-2 py-1 bg-surface border border-outline text-on-background uppercase tracking-wider rounded-md">{t}</span>
+                ))}
+              </div>
+            </div>
+             <div>
+              <span class="block text-[10px] font-mono text-on-surface-variant uppercase tracking-widest mb-4">Vertical</span>
+              <span class="text-sm font-bold text-on-background uppercase tracking-widest">{product.data.category}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual / Content -->
+        <div class="space-y-12">
+           <div class="rounded-3xl overflow-hidden aspect-[4/5] bg-surface border border-outline relative group">
+             {product.data.image && (
+                <img src={product.data.image} alt={product.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000" />
+              )}
+              <div class="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent"></div>
+           </div>
+
+           <div class="prose prose-invert lg:prose-lg">
+             <Content />
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>

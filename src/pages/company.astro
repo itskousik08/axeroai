@@ -1,0 +1,80 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { Target, Shield, Zap, Globe } from 'lucide-react';
+---
+
+<MainLayout title="Company" description="The intelligence lab behind the next generation of digital infrastructure.">
+  <div class="pt-32 pb-24 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <!-- Hero -->
+      <header class="mb-32 relative">
+        <div class="max-w-3xl space-y-8">
+           <div class="inline-flex items-center gap-3">
+              <div class="w-10 h-[1px] bg-primary"></div>
+              <span class="text-xs font-mono uppercase tracking-[0.2em] text-primary">Axero Group</span>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black premium-gradient-text leading-none tracking-tighter">
+              Engineering <br/> The Future.
+            </h1>
+            <p class="text-2xl text-on-surface-variant font-light leading-relaxed">
+              AxeroAI was founded on a single premise: Artificial intelligence is only as valuable as the systems that implement it. We don't just build models; we build the future of internet products.
+            </p>
+        </div>
+        
+        <!-- Decorative Background -->
+         <div class="absolute -right-20 top-0 w-96 h-96 bg-primary/10 blur-[120px] rounded-full -z-10 animate-float opacity-30"></div>
+      </header>
+
+      <!-- Vision / Principles -->
+      <section class="grid lg:grid-cols-2 gap-24 mb-40">
+        <div class="space-y-12">
+           <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Our Core <span class="text-on-surface-variant">Principles.</span></h2>
+           <p class="text-lg text-on-surface-variant font-light">
+             We operate at the intersection of extreme engineering and frontier research.
+           </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+           {[
+             { icon: Target, title: "Intentionality", desc: "Every line of code serves a purpose. No bloat, no fluff." },
+             { icon: Shield, title: "Reliability", desc: "Our systems are built for 24/7 mission-critical operations." },
+             { icon: Zap, title: "Velocity", desc: "We move fast because the frontier doesn't wait." },
+             { icon: Globe, title: "Impact", desc: "We only build things that change how the world operates." }
+           ].map(p => (
+             <div class="premium-card space-y-6">
+                <div class="w-12 h-12 rounded-xl bg-background border border-outline flex items-center justify-center text-primary">
+                   <p.icon size={24} />
+                </div>
+                <h3 class="text-xl font-bold">{p.title}</h3>
+                <p class="text-sm text-on-surface-variant font-light leading-relaxed">{p.desc}</p>
+             </div>
+           ))}
+        </div>
+      </section>
+
+      <!-- History / Roadmap -->
+      <section class="py-32 border-t border-outline">
+         <div class="grid lg:grid-cols-3 gap-16">
+            <div class="space-y-6">
+               <span class="text-[10px] font-mono text-primary uppercase tracking-widest">Roadmap</span>
+               <h3 class="text-3xl font-bold">The Trajectory</h3>
+            </div>
+            <div class="lg:col-span-2 space-y-12">
+               {[
+                 { year: '2024', title: 'The Foundation', desc: 'AxeroAI established as a multi-disciplinary AI research shop.' },
+                 { year: '2025', title: 'Product Expansion', desc: 'Launching the core product stack across 12+ digital verticals.' },
+                 { year: '2026', title: 'Universal Intelligence', desc: 'Integrating autonomous agents into the fabric of the global web.' }
+               ].map(item => (
+                 <div class="flex gap-12 group">
+                    <span class="text-4xl font-black text-outline group-hover:text-primary transition-colors font-display leading-none">{item.year}</span>
+                    <div class="space-y-2">
+                       <h4 class="text-xl font-bold text-white">{item.title}</h4>
+                       <p class="text-on-surface-variant font-light max-w-xl">{item.desc}</p>
+                    </div>
+                 </div>
+               ))}
+            </div>
+         </div>
+      </section>
+    </div>
+  </div>
+</MainLayout>

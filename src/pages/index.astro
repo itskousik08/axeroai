@@ -1,341 +1,186 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import PortfolioSection from '../components/PortfolioSection';
-import { MoveRight, Zap, Target, Layers, Rocket, Monitor, Globe, Search, Brain, FlaskConical, Bot, Puzzle } from 'lucide-react';
+import Hero from '../components/Hero.astro';
+import StatsStrip from '../components/StatsStrip';
+import Capabilities from '../components/Capabilities';
+import Methodology from '../components/Methodology';
+import Vision from '../components/Vision';
+import PublicationHighlights from '../components/PublicationHighlights';
+import LatestInsights from '../components/LatestInsights';
+import LabsWorkspace from '../components/LabsWorkspace';
+import FinalCTA from '../components/FinalCTA';
+import { getCollection } from 'astro:content';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import PremiumCard from '../components/PremiumCard';
+import MotionSection from '../components/MotionSection';
+
+const featuredProducts = (await getCollection('products'))
+  .filter(p => p.data.featured)
+  .slice(0, 4);
+
+const labs = (await getCollection('labs'))
+  .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+  .slice(0, 6);
+
+const blogPosts = (await getCollection('blog'))
+  .sort((a, b) => ((b.data.publishDate || b.data.date)?.valueOf() || 0) - ((a.data.publishDate || a.data.date)?.valueOf() || 0))
+  .slice(0, 3);
 ---
 
-<MainLayout title="Engineering the Intelligence of Tomorrow" description="AxeroAI builds high-performance AI products and innovation systems for the next generation of digital infrastructure.">
-	<main class="overflow-x-hidden">
-		<!-- HERO -->
-		<section class="min-h-screen flex items-center pt-16 relative overflow-hidden bg-white">
-			<div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(0,0,0,0.02)_30%,transparent_100%)] pointer-events-none"></div>
-			<div class="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center gap-20 relative z-10">
-				<div class="flex-1 space-y-10">
-					<div class="flex items-center gap-3">
-						<div class="w-8 h-[1px] bg-black"></div>
-						<span class="font-mono text-[11px] font-medium text-black uppercase tracking-[0.15em]">AI PRODUCT COMPANY · EST. 2024</span>
-					</div>
-					<h1 class="text-6xl md:text-8xl font-extrabold text-black leading-[1.05] tracking-tighter font-display">
-						We build AI<br/>systems that <span class="text-gray-300">actually</span><br/>work.
-					</h1>
-					<p class="text-xl md:text-2xl text-gray-400 font-light max-w-xl leading-relaxed">
-						Automation tools, intelligent platforms, and product infrastructure for teams who move fast and ship faster.
-					</p>
-					<div class="flex flex-wrap items-center gap-6 pt-4">
-						<button class="bg-black text-white px-10 py-5 rounded-xl font-bold flex items-center gap-3 hover:bg-gray-800 transition-all active:scale-95 group">
-							Explore Products
-							<MoveRight size={20} class="group-hover:translate-x-1 transition-transform" />
-						</button>
-						<button class="text-gray-400 hover:text-black transition-colors font-medium flex items-center gap-2 group">
-							Read our thesis
-							<MoveRight size={18} class="group-hover:translate-x-1 transition-transform" />
-						</button>
-					</div>
-				</div>
-				<div class="flex-1 w-full hidden md:block">
-					<div class="relative aspect-square max-w-[500px] mx-auto border border-black/5 rounded-3xl bg-gray-50 flex items-center justify-center p-12">
-						<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_0%,transparent_70%)]"></div>
-						<div class="text-[180px] grayscale opacity-10 blur-[1px]">
-							<Brain size={240} strokeWidth={0.5} />
-						</div>
-						
-						<!-- Hero Components from the template -->
-						<div class="absolute -bottom-6 -left-6 bg-white border border-black/5 rounded-2xl p-6 shadow-2xl flex flex-col gap-2">
-							<span class="font-display text-3xl font-extrabold text-black tracking-tight">3.2M+</span>
-							<span class="font-mono text-[10px] text-gray-400 uppercase tracking-widest">API Calls / Month</span>
-						</div>
-						<div class="absolute -top-4 -right-4 bg-white border border-black/5 rounded-2xl px-5 py-3 shadow-xl flex items-center gap-3">
-							<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
-							<span class="font-mono text-[11px] text-gray-400 uppercase tracking-wider font-medium">Systems Online</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+<MainLayout title="Systems Intelligence & Cognitive Infrastructure" description="AxeroAI architects high-fidelity autonomous infrastructure and intelligent ecosystems for a decentralized future.">
+	<main class="relative bg-background overflow-hidden">
+    <!-- Immersive Background Layers -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+       <div class="absolute top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/2 rounded-full blur-[200px] animate-pulse-slow"></div>
+       <div class="absolute bottom-[20%] -right-[10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[240px] animate-pulse-slow [animation-delay:2s]"></div>
+    </div>
 
-		<!-- TRUST BAR -->
-		<div class="py-12 border-y border-black/5 bg-gray-50/30 overflow-hidden">
-			<div class="container mx-auto px-10">
-				<div class="flex items-center gap-12">
-					<span class="font-mono text-[10px] text-gray-300 uppercase tracking-[0.12em] whitespace-nowrap">Powering teams at</span>
-					<div class="flex gap-16 items-center opacity-30 grayscale overflow-hidden whitespace-nowrap">
-						{['Founders Co.', 'BuildStack', 'NovaTech', 'LaunchPad', 'Meridian', 'CraftAI', 'OpsFlow', 'Founders Co.', 'BuildStack'].map(brand => (
-							<span class="font-display font-bold text-sm tracking-widest uppercase hover:text-black transition-colors">{brand}</span>
-						))}
-					</div>
-				</div>
-			</div>
-		</div>
+    <Hero />
 
-		<!-- WHAT WE BUILD (STICKY) -->
-		<section id="solutions" class="py-32">
-			<div class="container mx-auto px-10">
-				<div class="flex flex-col lg:flex-row gap-20">
-					<div class="lg:w-1/2 lg:sticky lg:top-32 h-fit">
-						<div class="flex items-center gap-3 mb-6">
-							<div class="w-8 h-[1px] bg-black"></div>
-							<span class="font-mono text-[10px] font-medium text-black uppercase tracking-[0.2em]">Core Capabilities</span>
-						</div>
-						<h2 class="text-5xl md:text-6xl font-extrabold text-black leading-tight tracking-tighter mb-8 font-display">
-							Four disciplines.<br/>One system.
-						</h2>
-						<p class="text-xl text-gray-400 font-light leading-relaxed max-w-md mb-12">
-							AxeroAI doesn't build in one direction. We architect complete intelligence stacks — from the model layer to the interface layer.
-						</p>
-						<div class="text-9xl font-black text-gray-50 leading-none tracking-tighter select-none font-display">01</div>
-					</div>
-					<div class="lg:w-1/2 space-y-4">
-						<div class="p-10 border border-black/5 rounded-3xl hover:bg-gray-50 transition-all group relative overflow-hidden">
-							<div class="absolute left-0 top-0 bottom-0 w-[3px] bg-black scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></div>
-							<span class="font-mono text-[11px] text-gray-300 tracking-widest mb-4 block">01 / AI Products</span>
-							<h4 class="text-2xl font-bold text-black mb-4 tracking-tight font-display">Intelligent Agents & Decision Engines</h4>
-							<p class="text-gray-500 font-light leading-relaxed mb-8">Autonomous systems that reason, plan, and execute complex workflows without constant human supervision. Built for real production environments, not demos.</p>
-							<div class="flex flex-wrap gap-2">
-								<span class="text-[9px] font-mono border border-black/5 px-2 py-1 rounded-md text-gray-400 uppercase tracking-widest">LLM Integration</span>
-								<span class="text-[9px] font-mono border border-black/5 px-2 py-1 rounded-md text-gray-400 uppercase tracking-widest">Multi-agent</span>
-								<span class="text-[9px] font-mono border border-black/5 px-2 py-1 rounded-md text-gray-400 uppercase tracking-widest">RAG Systems</span>
-							</div>
-						</div>
-						<div class="p-10 border border-black/5 rounded-3xl hover:bg-gray-50 transition-all group relative overflow-hidden">
-							<div class="absolute left-0 top-0 bottom-0 w-[3px] bg-black scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></div>
-							<span class="font-mono text-[11px] text-gray-300 tracking-widest mb-4 block">02 / Automation Systems</span>
-							<h4 class="text-2xl font-bold text-black mb-4 tracking-tight font-display">Workflow Orchestration & RPA</h4>
-							<p class="text-gray-500 font-light leading-relaxed mb-8">High-performance robotic process automation and pipeline orchestration. We eliminate the repetitive work that slows teams down and costs companies millions.</p>
-							<div class="flex flex-wrap gap-2">
-								<span class="text-[9px] font-mono border border-black/5 px-2 py-1 rounded-md text-gray-400 uppercase tracking-widest">Process Mining</span>
-								<span class="text-[9px] font-mono border border-black/5 px-2 py-1 rounded-md text-gray-400 uppercase tracking-widest">API Automation</span>
-								<span class="text-[9px] font-mono border border-black/5 px-2 py-1 rounded-md text-gray-400 uppercase tracking-widest">Scheduling</span>
-							</div>
-						</div>
-						<div class="p-10 border border-black/5 rounded-3xl hover:bg-gray-50 transition-all group relative overflow-hidden">
-							<div class="absolute left-0 top-0 bottom-0 w-[3px] bg-black scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></div>
-							<span class="font-mono text-[11px] text-gray-300 tracking-widest mb-4 block">03 / Web Platforms</span>
-							<h4 class="text-2xl font-bold text-black mb-4 tracking-tight font-display">Scalable SaaS Architecture</h4>
-							<p class="text-gray-500 font-light leading-relaxed mb-8">Production-grade web products with clean architecture, modern stacks, and the kind of UX that turns first-time users into loyal customers.</p>
-							<div class="flex flex-wrap gap-2">
-								<span class="text-[9px] font-mono border border-black/5 px-2 py-1 rounded-md text-gray-400 uppercase tracking-widest">React / Next.js</span>
-								<span class="text-[9px] font-mono border border-black/5 px-2 py-1 rounded-md text-gray-400 uppercase tracking-widest">Supabase</span>
-								<span class="text-[9px] font-mono border border-black/5 px-2 py-1 rounded-md text-gray-400 uppercase tracking-widest">Edge Functions</span>
-							</div>
-						</div>
-						<div class="p-10 border border-black/5 rounded-3xl hover:bg-gray-50 transition-all group relative overflow-hidden">
-							<div class="absolute left-0 top-0 bottom-0 w-[3px] bg-black scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></div>
-							<span class="font-mono text-[11px] text-gray-300 tracking-widest mb-4 block">04 / Labs & Experiments</span>
-							<h4 class="text-2xl font-bold text-black mb-4 tracking-tight font-display">Frontier Research & Tooling</h4>
-							<p class="text-gray-500 font-light leading-relaxed mb-8">Our R&D layer. Pushing boundaries in human-computer interaction, model fine-tuning, and novel interface paradigms that haven't been productized yet.</p>
-							<div class="flex flex-wrap gap-2">
-								<span class="text-[9px] font-mono border border-black/5 px-2 py-1 rounded-md text-gray-400 uppercase tracking-widest">Prototyping</span>
-								<span class="text-[9px] font-mono border border-black/5 px-2 py-1 rounded-md text-gray-400 uppercase tracking-widest">Fine-tuning</span>
-								<span class="text-[9px] font-mono border border-black/5 px-2 py-1 rounded-md text-gray-400 uppercase tracking-widest">Novel UI</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+    <!-- 2. Trust Bar -->
+    <MotionSection client:visible direction="down" delay={0.2} className="border-y border-outline py-10 bg-surface/20 backdrop-blur-md overflow-hidden relative z-10">
+      <div class="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center gap-10 md:gap-20">
+        <span class="font-mono text-[9px] text-on-surface-muted uppercase tracking-[0.3em] whitespace-nowrap">Integrated with frontier frameworks</span>
+        <div class="flex overflow-hidden relative group w-full opacity-40 hover:opacity-80 transition-opacity">
+           <div class="animate-scroll flex whitespace-nowrap gap-16 md:gap-24 items-center">
+            {['OpenAI Protocol', 'Anthropic Hub', 'Mistral Core', 'Meta Systems', 'Google Cloud', 'NVIDIA Bio', 'Oracle AI'].map((name) => (
+              <span class="text-xl md:text-2xl font-display font-black text-white hover:text-primary transition-all cursor-default tracking-tighter uppercase whitespace-nowrap">
+                {name}
+              </span>
+            ))}
+            {['OpenAI Protocol', 'Anthropic Hub', 'Mistral Core', 'Meta Systems', 'Google Cloud', 'NVIDIA Bio', 'Oracle AI'].map((name) => (
+              <span class="text-xl md:text-2xl font-display font-black text-white hover:text-primary transition-all cursor-default tracking-tighter uppercase whitespace-nowrap">
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </MotionSection>
 
-		<!-- STATS -->
-		<div class="py-24 border-y border-black/5 bg-gray-50/50">
-			<div class="container mx-auto px-10">
-				<div class="grid grid-cols-2 md:grid-cols-4 gap-12">
-					<div class="text-center md:border-r border-black/5 last:border-none">
-						<span class="block text-5xl md:text-7xl font-extrabold text-black tracking-tighter mb-2 font-display">12</span>
-						<span class="block font-mono text-[10px] text-gray-400 uppercase tracking-widest">Products Shipped</span>
-					</div>
-					<div class="text-center md:border-r border-black/5 last:border-none">
-						<span class="block text-5xl md:text-7xl font-extrabold text-black tracking-tighter mb-2 font-display">3.2<span class="text-gray-300">M+</span></span>
-						<span class="block font-mono text-[10px] text-gray-400 uppercase tracking-widest">API Calls Monthly</span>
-					</div>
-					<div class="text-center md:border-r border-black/5 last:border-none">
-						<span class="block text-5xl md:text-7xl font-extrabold text-black tracking-tighter mb-2 font-display">40<span class="text-gray-300">+</span></span>
-						<span class="block font-mono text-[10px] text-gray-400 uppercase tracking-widest">Countries Reached</span>
-					</div>
-					<div class="text-center md:border-r border-black/5 last:border-none">
-						<span class="block text-5xl md:text-7xl font-extrabold text-black tracking-tighter mb-2 font-display">99.9<span class="text-gray-300">%</span></span>
-						<span class="block font-mono text-[10px] text-gray-400 uppercase tracking-widest">Platform Uptime</span>
-					</div>
-				</div>
-			</div>
-		</div>
+    <!-- 3. Stats Strip -->
+    <StatsStrip client:visible />
 
-		<!-- PRODUCTS SECTION -->
-		<PortfolioSection client:load />
+    <!-- 4. Core Capabilities -->
+    <Capabilities client:visible />
 
-		<!-- LABS -->
-		<section id="labs" class="py-32 bg-gray-50/50 border-y border-black/5">
-			<div class="container mx-auto px-10">
-				<div class="flex flex-col lg:flex-row gap-24">
-					<div class="lg:w-1/2">
-						<div class="flex items-center gap-3 mb-6">
-							<div class="w-8 h-[1px] bg-black"></div>
-							<span class="font-mono text-[10px] font-medium text-black uppercase tracking-[0.2em]">Research & Development</span>
-						</div>
-						<h2 class="text-4xl md:text-6xl font-extrabold text-black tracking-tighter mb-10 font-display">Axero Labs</h2>
-						<p class="text-lg text-gray-500 font-light leading-relaxed mb-6">Our experimental layer. Labs is where we push past the edge — exploring new interaction models and novel AI applications that don't fit categories.</p>
-						<div class="bg-white border border-black/5 rounded-2xl p-6 border-l-4 border-l-black mb-12">
-							<p class="text-xs font-mono text-gray-400 leading-relaxed uppercase tracking-wider">
-								Warning: Lab projects are unstable by design. Interfaces change. APIs break. Experiments get paused or killed without notice.
-							</p>
-						</div>
-						<a href="#" class="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest group">
-							Enter Labs <MoveRight size={18} class="group-hover:translate-x-1 transition-transform" />
-						</a>
-					</div>
-					<div class="lg:w-1/2 space-y-3">
-						{[
-							{ title: 'NeuralPilot', desc: 'Autonomous tab control AI browser agent', status: 'Prototyping' },
-							{ title: 'Kexo Canvas', desc: 'Visual learning with AI node connections', status: 'Exploring' },
-							{ title: 'DM Automator', desc: 'Meta Graph API automated messaging', status: 'Exploring' },
-							{ title: 'Promtix News', desc: 'AI publishing with per-publisher monetization', status: 'Prototyping' },
-							{ title: 'Zenthous Scraper', desc: 'Firestore cached Maps scraping suite', status: 'Exploring' }
-						].map(lab => (
-							<div class="group bg-white border border-black/5 rounded-2xl p-6 flex items-center justify-between hover:border-black/20 transition-all cursor-pointer">
-								<div>
-									<h4 class="font-display font-bold text-black mb-1 group-hover:text-black transition-colors">{lab.title}</h4>
-									<p class="text-[13px] text-gray-400 font-light">{lab.desc}</p>
-								</div>
-								<span class={`font-mono text-[9px] uppercase tracking-widest px-3 py-1 rounded-full border ${lab.status === 'Prototyping' ? 'border-cyan-200 text-cyan-600 bg-cyan-50/50' : 'border-gray-100 text-gray-400 bg-gray-50/50'}`}>
-									{lab.status}
-								</span>
-							</div>
-						))}
-					</div>
-				</div>
-			</div>
-		</section>
+    <!-- 5. Featured Systems (Enhanced Product Section) -->
+    <section id="products" class="py-40 relative z-10">
+      <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <header class="mb-24 flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+           <div class="space-y-6">
+              <div class="section-label">Selected Systems</div>
+              <h2 class="text-5xl md:text-8xl font-extrabold tracking-tighter leading-none">The Axero Fleet.</h2>
+           </div>
+           <a href="/products" class="group flex items-center gap-2 text-on-surface-variant hover:text-white transition-all text-sm font-medium">
+              View Deployment Catalog
+              <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+           </a>
+        </header>
 
-		<!-- PROCESS -->
-		<section class="py-32">
-			<div class="container mx-auto px-10">
-				<div class="text-center space-y-4 mb-24">
-					<div class="flex items-center justify-center gap-3">
-						<div class="w-8 h-[1px] bg-black"></div>
-						<span class="font-mono text-[10px] font-medium text-black uppercase tracking-[0.2em]">Methodology</span>
-						<div class="w-8 h-[1px] bg-black"></div>
-					</div>
-					<h3 class="text-5xl md:text-7xl font-extrabold text-black tracking-tighter font-display">The Engineering Cycle</h3>
-				</div>
-				<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-					{[
-						{ step: '01', title: 'Think', desc: 'Deep research and feasibility analysis. We don\'t start building until we understand the problem completely.' },
-						{ step: '02', title: 'Build', desc: 'Rapid prototyping, then high-fidelity engineering. Fast iterations, no shortcuts on architecture.' },
-						{ step: '03', title: 'Ship', desc: 'Production-grade deployment with observability, error handling, and real-world load in mind.' },
-						{ step: '04', title: 'Improve', desc: 'Data-driven iteration. We measure everything and keep improving until the product is truly great.' }
-					].map(p => (
-						<div class="text-center space-y-6 group">
-							<div class="w-16 h-16 rounded-full border border-black/5 bg-white flex items-center justify-center font-mono text-lg text-gray-300 group-hover:border-black group-hover:text-black transition-all mx-auto shadow-sm">
-								{p.step}
-							</div>
-							<h5 class="text-xl font-bold text-black font-display">{p.title}</h5>
-							<p class="text-sm text-gray-400 font-light leading-relaxed px-4">{p.desc}</p>
-						</div>
-					))}
-				</div>
-			</div>
-		</section>
+        <div class="grid lg:grid-cols-12 gap-8">
+          {featuredProducts.slice(0, 1).map(product => (
+            <div class="lg:col-span-8 group">
+               <PremiumCard client:visible className="p-0 !bg-transparent border-0 ring-1 ring-outline hover:ring-primary/50 !rounded-[2.5rem] h-full">
+                  <div class="grid md:grid-cols-2 h-full">
+                     <div class="p-12 md:p-16 flex flex-col justify-between space-y-12 h-full">
+                        <div class="space-y-8">
+                           <div class="flex items-center gap-4">
+                              <div class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-3xl">🧩</div>
+                              <span class="font-mono text-[10px] text-[#00C896] border border-[#00C896]/30 bg-[#00C896]/5 px-4 py-1.5 rounded-full uppercase tracking-widest font-bold">Deployed v2.4</span>
+                           </div>
+                           <h3 class="text-5xl font-extrabold tracking-tight">{product.data.title}</h3>
+                           <p class="text-xl text-on-surface-variant font-light leading-relaxed">{product.data.description}</p>
+                        </div>
+                        <div class="flex items-center gap-8 pt-8 border-t border-outline">
+                           <a href={`/products/${product.id}`} class="premium-button premium-button-primary px-8">Initialize Node</a>
+                           <div class="flex gap-4">
+                              {product.data.tech.slice(0, 3).map(t => (
+                                <span class="font-mono text-[10px] text-on-surface-muted uppercase">{t}</span>
+                              ))}
+                           </div>
+                        </div>
+                     </div>
+                     <div class="bg-surface-accent relative overflow-hidden h-full min-h-[400px]">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-9xl grayscale opacity-20 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000">
+                           🧩
+                        </div>
+                     </div>
+                  </div>
+               </PremiumCard>
+            </div>
+          ))}
 
-		<!-- BLOG -->
-		<section id="blog" class="py-32 bg-gray-50/30">
-			<div class="container mx-auto px-10">
-				<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-					<div>
-						<div class="flex items-center gap-3 mb-4">
-							<div class="w-4 h-[1px] bg-black"></div>
-							<span class="font-mono text-[10px] tracking-[0.2em] uppercase text-black">Intelligence Brief</span>
-						</div>
-						<h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-black">From the Lab</h2>
-					</div>
-					<a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-black transition-colors group">
-						All Articles <MoveRight size={16} class="group-hover:translate-x-1 transition-transform" />
-					</a>
-				</div>
-				<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-					<a href="#" class="lg:col-span-2 group">
-						<div class="aspect-[21/9] rounded-3xl bg-black overflow-hidden relative mb-8 flex items-center justify-center">
-							<div class="absolute inset-0 bg-gradient-to-tr from-black/60 to-transparent z-10"></div>
-							<div class="relative z-20 text-white/20 group-hover:scale-110 transition-transform duration-1000">
-								<Bot size={160} strokeWidth={1} />
-							</div>
-						</div>
-						<div class="space-y-4">
-							<div class="flex items-center gap-4">
-								<span class="text-[10px] font-mono uppercase bg-black text-white px-3 py-1 rounded tracking-widest">Deep Dive</span>
-								<span class="text-[10px] font-mono text-gray-400">Apr 18, 2025</span>
-							</div>
-							<h3 class="text-3xl font-extrabold tracking-tight group-hover:text-black transition-colors font-display">Why most AI agents fail in production — and how we fixed it</h3>
-							<p class="text-gray-500 font-light leading-relaxed max-w-2xl">Failure patterns in autonomous systems and architectural solutions for reliable shipping.</p>
-						</div>
-					</a>
-					<div class="space-y-8">
-						<a href="#" class="block group">
-							<div class="aspect-[21/9] rounded-2xl bg-gray-100 overflow-hidden relative mb-6 flex items-center justify-center">
-								<div class="text-black/5 group-hover:scale-110 transition-transform duration-1000">
-									<Zap size={60} strokeWidth={1} />
-								</div>
-							</div>
-							<div class="space-y-3">
-								<div class="flex items-center gap-4 text-[9px] font-mono uppercase tracking-widest text-gray-400">
-									<span>Engineering</span>
-									<span>Apr 10, 2025</span>
-								</div>
-								<h4 class="text-xl font-bold tracking-tight font-display">Building lead scrapers that scale</h4>
-								<p class="text-[13px] text-gray-400 font-light truncate">Rate limiting and evasion strategies for production.</p>
-							</div>
-						</a>
-						<a href="#" class="block group">
-							<div class="aspect-[21/9] rounded-2xl bg-gray-100 overflow-hidden relative mb-6 flex items-center justify-center">
-								<div class="text-black/5 group-hover:scale-110 transition-transform duration-1000">
-									<Puzzle size={60} strokeWidth={1} />
-								</div>
-							</div>
-							<div class="space-y-3">
-								<div class="flex items-center gap-4 text-[9px] font-mono uppercase tracking-widest text-gray-400">
-									<span>Product</span>
-									<span>Mar 28, 2025</span>
-								</div>
-								<h4 class="text-xl font-bold tracking-tight font-display">Prototype to SaaS: Zenthous architecture</h4>
-								<p class="text-[13px] text-gray-400 font-light truncate">Data models for multi-tenant intelligence apps.</p>
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</section>
+          <div class="lg:col-span-4 flex flex-col gap-8">
+             {featuredProducts.slice(1, 3).map((product, i) => (
+                <PremiumCard client:visible className="flex-1 group">
+                   <div class="space-y-8">
+                      <div class="flex justify-between items-start">
+                         <div class="w-12 h-12 rounded-xl bg-surface-accent flex items-center justify-center text-2xl border border-outline">⚡</div>
+                         <span class="font-mono text-[10px] text-orange-400 border border-orange-400/30 bg-orange-400/5 px-2.5 py-0.5 rounded-full uppercase tracking-widest font-bold">Beta</span>
+                      </div>
+                      <h3 class="text-2xl font-bold">{product.data.title}</h3>
+                      <p class="text-sm text-on-surface-variant font-light leading-relaxed line-clamp-3 italic">"Defining the boundary of autonomous interaction."</p>
+                      <div class="pt-6 border-t border-outline flex items-center justify-between">
+                         <a href={`/products/${product.id}`} class="text-xs font-mono text-primary uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            Access Portal <ArrowUpRight size={14} />
+                         </a>
+                      </div>
+                   </div>
+                </PremiumCard>
+             ))}
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<!-- NEWSLETTER -->
-		<div class="py-20 border-y border-black/5 bg-white">
-			<div class="container mx-auto px-10">
-				<div class="flex flex-col md:flex-row items-center justify-between gap-12">
-					<div class="max-w-md">
-						<h3 class="text-2xl font-bold mb-2 font-display">The Axero Intelligence Brief</h3>
-						<p class="text-sm text-gray-400 font-light">Weekly insights on AI systems, product launches, and lab experiments. No fluff.</p>
-					</div>
-					<div class="flex w-full md:w-auto">
-						<input type="email" placeholder="your@email.com" class="w-full md:w-[300px] px-6 py-4 bg-gray-50 border border-black/5 rounded-l-xl focus:outline-none focus:border-black transition-colors text-sm" />
-						<button class="bg-black text-white px-8 py-4 rounded-r-xl font-bold text-sm hover:bg-gray-800 transition-all whitespace-nowrap">Subscribe →</button>
-					</div>
-				</div>
-			</div>
-		</div>
+    <!-- 6. Vision (Thesis) -->
+    <Vision client:load />
 
-		<!-- FINAL VISION -->
-		<section class="py-40 text-center">
-			<div class="container mx-auto px-10">
-				<div class="flex items-center justify-center gap-3 mb-10">
-					<div class="w-8 h-[1px] bg-black"></div>
-					<span class="font-mono text-[10px] font-medium text-black uppercase tracking-[0.2em]">Our Thesis</span>
-					<div class="w-8 h-[1px] bg-black"></div>
-				</div>
-				<h2 class="text-5xl md:text-8xl font-extrabold text-black leading-none tracking-tighter mb-12 font-display">
-					"AI is only useful when it's<br/> building <span class="text-gray-300">real things.</span>"
-				</h2>
-				<p class="text-xl text-gray-400 font-light max-w-xl mx-auto leading-relaxed mb-16">
-					Our mission is to close the gap between AI potential and practical reality — shipping tools that work in the real world.
-				</p>
-				<button class="bg-black text-white px-12 py-6 rounded-2xl font-bold text-lg hover:bg-gray-800 transition-all active:scale-95 group">
-					Read full mission <MoveRight size={24} class="inline-block ml-3 group-hover:translate-x-1 transition-transform" />
-				</button>
-			</div>
-		</section>
+    <!-- 7. Labs (Foundry) -->
+    <section id="labs" class="py-40 bg-surface/30 backdrop-blur-xl border-y border-outline relative overflow-hidden">
+       <div class="grid-bg opacity-30"></div>
+       <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
+          <div class="grid lg:grid-cols-2 gap-32 items-start">
+             <div class="space-y-10 lg:sticky lg:top-40">
+                <div class="section-label">Cognitive Foundry</div>
+                <h2 class="text-5xl md:text-8xl font-extrabold tracking-tighter leading-none">Axero Labs.</h2>
+                <p class="text-2xl text-on-surface-variant font-light leading-relaxed max-w-lg">
+                   Our experimental unit for pure technical risk. Exploring the edge case, the unproven, and the frontier of neural execution.
+                </p>
+                <div class="p-8 border border-outline bg-background/50 rounded-2xl border-l-[6px] border-l-primary shadow-2xl">
+                   <p class="text-xs font-mono text-on-surface-variant leading-relaxed uppercase tracking-wider">
+                      ⚠️ WARNING: THE FOLLOWING PROJECTS ARE ACTIVE EXPERIMENTS. PROTOCOLS ARE UNSTABLE AND SUBJECT TO TOTAL REDESIGN.
+                   </p>
+                </div>
+                <a href="/labs" class="premium-button premium-button-primary px-10 py-5">
+                  Access Workbench
+                </a>
+             </div>
+
+             <LabsWorkspace client:visible labs={labs} />
+          </div>
+       </div>
+    </section>
+
+    <!-- 8. Methodology -->
+    <Methodology client:visible />
+
+    <!-- 9. Publications Highights -->
+    <PublicationHighlights client:visible />
+
+    <!-- 10. Insights (Blog) -->
+    <LatestInsights client:visible posts={blogPosts} />
+
+    <!-- 11. Final CTA (Immersive) -->
+    <FinalCTA client:visible />
+
 	</main>
 </MainLayout>
+
+<style>
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+  }
+</style>

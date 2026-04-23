@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import { ArrowRight } from 'lucide-react';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => ((b.data.publishDate || b.data.date)?.valueOf() || 0) - ((a.data.publishDate || a.data.date)?.valueOf() || 0))
+  .slice(0, 3);
+---
+
+<section id="blog" class="py-32">
+  <div class="max-w-7xl mx-auto px-6 md:px-10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+      <div class="space-y-4">
+        <div class="section-label">Intelligence Brief</div>
+        <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter">From the Lab</h2>
+      </div>
+      <a href="/blog" class="group flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors text-sm font-medium">
+        All Articles
+        <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+      </a>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-4">
+      {posts.map((post, index) => (
+        <a 
+          href={`/blog/${post.slug}`} 
+          class={`premium-card overflow-hidden group hover:scale-[1.01] flex flex-col ${index === 0 ? 'lg:col-span-2' : ''}`}
+        >
+          <div class={`relative aspect-video overflow-hidden border-b border-outline ${index === 0 ? 'lg:aspect-[21/9]' : ''}`}>
+             <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10 opacity-40"></div>
+             <img 
+               src={post.data.image} 
+               alt={post.data.title} 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
+             />
+             <div class="absolute top-6 left-6 z-20">
+                <span class="font-mono text-[9px] text-primary uppercase tracking-widest bg-primary/10 border border-primary/20 px-3 py-1 rounded-md backdrop-blur-md">
+                   {post.data.category}
+                </span>
+             </div>
+          </div>
+          
+          <div class="p-8 flex flex-col justify-between flex-grow space-y-6">
+            <div class="space-y-4">
+              <span class="font-mono text-[10px] text-on-surface-muted uppercase tracking-widest">
+                {(post.data.publishDate || post.data.date)?.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </span>
+              <h3 class={`font-bold tracking-tight group-hover:text-primary transition-colors ${index === 0 ? 'text-3xl' : 'text-xl'}`}>
+                {post.data.title}
+              </h3>
+              <p class="text-on-surface-variant font-light text-sm line-clamp-3 leading-relaxed">
+                {post.data.description}
+              </p>
+            </div>
+            
+            <div class="pt-6 border-t border-outline flex items-center justify-between">
+              <div class="flex items-center gap-2 text-[10px] font-mono text-on-surface-muted uppercase tracking-widest group-hover:text-on-background transition-colors">
+                Read Article <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+              <span class="text-[10px] font-mono text-on-surface-muted lowercase">8 min read</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,111 @@
+---
+import { ArrowRight, Zap, Database, Shield } from 'lucide-react';
+import HeroVisual from './HeroVisual';
+---
+
+<section class="min-h-screen relative flex items-center pt-16 overflow-hidden">
+  <!-- Background atmosphere -->
+  <div class="grid-bg"></div>
+  <div class="absolute w-[800px] h-[800px] rounded-full bg-primary/5 blur-[160px] -right-48 top-1/2 -translate-y-1/2 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-10 w-full relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div class="space-y-10">
+        <div class="section-label animate-fade-up [animation-delay:100ms]">
+          Parent Intelligence Company · 2025 Cycle
+        </div>
+        
+        <h1 class="text-[clamp(44px,7vw,92px)] font-extrabold leading-[0.95] tracking-tight animate-fade-up [animation-delay:200ms] premium-gradient-text">
+          Architecting<br/>Cognitive<br/>Infrastructure.
+        </h1>
+
+        <p class="text-xl text-on-surface-variant font-light leading-relaxed max-w-lg animate-fade-up [animation-delay:300ms]">
+          We build autonomous systems, intelligent platforms, and the neural ecosystems powering the next decentralized era.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-6 animate-fade-up [animation-delay:400ms]">
+          <a href="#products" class="premium-button premium-button-primary px-10 py-5 text-lg group">
+            Explore Systems
+            <ArrowRight size={20} class="group-hover:translate-x-1 transition-transform" />
+          </a>
+          <a href="/blog" class="group flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors text-sm font-medium">
+            Read Publication
+            <ArrowRight size={18} class="transition-transform group-hover:translate-x-1" />
+          </a>
+        </div>
+
+        <div class="flex items-center gap-10 pt-12 border-t border-outline animate-fade-up [animation-delay:500ms]">
+           {[
+             { icon: Zap, label: "Zero Latency", val: "< 12ms" },
+             { icon: Database, label: "Neural Nodes", val: "14.2k" },
+             { icon: Shield, label: "Security", val: "L4-Level" }
+           ].map(stat => (
+             <div class="space-y-1">
+                <div class="flex items-center gap-2 text-on-surface-muted">
+                   <stat.icon size={14} />
+                   <span class="text-[10px] font-mono uppercase tracking-widest">{stat.label}</span>
+                </div>
+                <div class="text-white font-bold tracking-tight">{stat.val}</div>
+             </div>
+           ))}
+        </div>
+      </div>
+
+      <div class="relative flex justify-center items-center h-[500px] lg:h-[700px] animate-fade-up [animation-delay:600ms]">
+        <div class="absolute inset-0 z-0">
+          <HeroVisual client:load />
+        </div>
+        
+        <!-- Layered Data Cards -->
+        <div class="relative w-full h-full pointer-events-none">
+           <!-- Card 1 -->
+           <div class="absolute top-[15%] right-0 w-48 p-4 bg-surface/40 backdrop-blur-xl border border-outline rounded-xl shadow-2xl animate-float [animation-duration:8s] pointer-events-auto">
+              <div class="flex items-center justify-between mb-3">
+                 <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                 <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Live Pulse</span>
+              </div>
+              <div class="h-12 flex items-end gap-1 mb-2">
+                 {[40, 70, 45, 90, 65, 80, 50].map(h => (
+                   <div class="flex-1 bg-primary/40 rounded-t-sm" style={`height: ${h}%`}></div>
+                 ))}
+              </div>
+              <div class="text-xs font-bold text-white tracking-tight">Active Agents</div>
+           </div>
+
+           <!-- Card 2 -->
+           <div class="absolute bottom-[20%] left-0 w-56 p-5 bg-surface/40 backdrop-blur-xl border border-outline rounded-xl shadow-2xl animate-float [animation-duration:10s] [animation-delay:1s] pointer-events-auto">
+              <div class="flex items-center gap-3 mb-4">
+                 <div class="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <Zap size={16} class="text-primary" />
+                 </div>
+                 <div>
+                    <div class="text-[8px] font-mono text-zinc-500 uppercase tracking-widest">Processing</div>
+                    <div class="text-sm font-bold text-white">Universal Sync</div>
+                 </div>
+              </div>
+              <div class="space-y-2">
+                 <div class="h-1 w-full bg-zinc-800 rounded-full overflow-hidden">
+                    <div class="h-full bg-primary w-[72%]"></div>
+                 </div>
+                 <div class="flex justify-between text-[9px] font-mono text-zinc-500 capitalize">
+                    <span>9.4 TB/s</span>
+                    <span>72%</span>
+                 </div>
+              </div>
+           </div>
+
+           <!-- Stats Badges -->
+           <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
+              <div class="text-[120px] font-display font-black text-white/5 tracking-tighter leading-none select-none">AX-01</div>
+           </div>
+        </div>
+
+        <!-- System Online Badge -->
+        <div class="absolute bottom-4 right-0 bg-surface-accent/80 backdrop-blur-md border border-outline rounded-xl px-4 py-2.5 flex items-center gap-3 shadow-2xl pointer-events-auto hover:border-primary/40 transition-colors">
+          <div class="w-1.5 h-1.5 rounded-full bg-[#00C896] shadow-[0_0_10px_#00C896] animate-pulse"></div>
+          <span class="font-mono text-[11px] text-on-surface-variant tracking-wider uppercase">Protocol v0.2 Operational</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

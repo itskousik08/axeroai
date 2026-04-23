@@ -1,0 +1,70 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { Mail, Globe, MessageSquare, ArrowRight } from 'lucide-react';
+---
+
+<MainLayout title="Contact" description="Get in touch with the AxeroAI engineering team for partnerships and project development.">
+  <div class="pt-32 pb-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-24 items-start">
+        <div class="space-y-12">
+           <div class="space-y-6">
+              <div class="inline-flex items-center gap-3">
+                <div class="w-10 h-[1px] bg-primary"></div>
+                <span class="text-xs font-mono uppercase tracking-[0.2em] text-primary">Inquiries</span>
+              </div>
+              <h1 class="text-6xl md:text-8xl font-black premium-gradient-text leading-tight tracking-tighter">
+                Initialize <br/> Contact.
+              </h1>
+              <p class="text-xl text-on-surface-variant font-light leading-relaxed max-w-md">
+                We're selective about partnerships. If you're building a system that requires extreme intelligence engineering, we want to hear from you.
+              </p>
+           </div>
+
+           <div class="space-y-8">
+              {[
+                { icon: Mail, label: "General Inquiries", value: "hello@axero.ai" },
+                { icon: MessageSquare, label: "Technical Partnerships", value: "labs@axero.ai" },
+                { icon: Globe, label: "Global Ops", value: "San Francisco / Remote" }
+              ].map(item => (
+                <div class="flex items-center gap-6 group cursor-pointer">
+                   <div class="w-12 h-12 rounded-xl bg-surface border border-outline flex items-center justify-center text-on-surface-variant group-hover:text-primary group-hover:border-primary/50 transition-all">
+                      <item.icon size={20} />
+                   </div>
+                   <div>
+                      <span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-widest">{item.label}</span>
+                      <p class="text-lg font-bold text-white group-hover:text-primary transition-colors">{item.value}</p>
+                   </div>
+                </div>
+              ))}
+           </div>
+        </div>
+
+        <div class="premium-card bg-surface/50 p-10 border-outline backdrop-blur-3xl">
+           <form class="space-y-8">
+              <div class="grid md:grid-cols-2 gap-8">
+                 <div class="space-y-2">
+                    <label class="text-[10px] font-mono text-on-surface-variant uppercase tracking-widest ml-1">Identity</label>
+                    <input type="text" placeholder="Your Name" class="w-full bg-background border border-outline rounded-xl px-6 py-4 focus:outline-none focus:border-primary transition-all text-white placeholder:text-on-surface-variant/30" />
+                 </div>
+                 <div class="space-y-2">
+                    <label class="text-[10px] font-mono text-on-surface-variant uppercase tracking-widest ml-1">Communication</label>
+                    <input type="email" placeholder="email@address.com" class="w-full bg-background border border-outline rounded-xl px-6 py-4 focus:outline-none focus:border-primary transition-all text-white placeholder:text-on-surface-variant/30" />
+                 </div>
+              </div>
+              <div class="space-y-2">
+                  <label class="text-[10px] font-mono text-on-surface-variant uppercase tracking-widest ml-1">The Challenge</label>
+                  <textarea rows="5" placeholder="Tell us about the system you're building..." class="w-full bg-background border border-outline rounded-xl px-6 py-4 focus:outline-none focus:border-primary transition-all text-white placeholder:text-on-surface-variant/30"></textarea>
+              </div>
+              <button class="w-full premium-button premium-button-primary py-5 text-sm uppercase tracking-[0.3em] font-black group">
+                Send Transmission <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+              <p class="text-[10px] text-center text-on-surface-variant/50 uppercase tracking-widest pt-4">
+                 Response time: ~24-48 hours within standard system cycles.
+              </p>
+           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>

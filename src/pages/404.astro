@@ -1,0 +1,30 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { Home, ArrowLeft } from 'lucide-react';
+---
+
+<MainLayout title="404 - Lost in the Void" description="The page you are looking for has been moved or purged from the system.">
+  <div class="min-h-[80vh] flex items-center justify-center pt-20 px-6">
+    <div class="text-center space-y-8">
+      <div class="relative inline-block">
+        <h1 class="text-[12rem] md:text-[18rem] font-black text-outline leading-none opacity-20">404</h1>
+        <div class="absolute inset-0 flex items-center justify-center">
+           <span class="text-2xl md:text-4xl font-bold premium-gradient-text">System Out of Bounds</span>
+        </div>
+      </div>
+      
+      <p class="text-xl text-on-surface-variant font-light max-w-md mx-auto">
+        The cognitive path you followed does not exist. It may have been a hallucination, or the resources have been reallocated.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-6">
+        <a href="/" class="premium-button premium-button-primary">
+          <Home size={18} /> Back to Nexus
+        </a>
+        <button onclick="history.back()" class="premium-button premium-button-secondary">
+          <ArrowLeft size={18} /> Revert Path
+        </button>
+      </div>
+    </div>
+  </div>
+</MainLayout>

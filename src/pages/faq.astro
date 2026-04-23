@@ -1,0 +1,47 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { HelpCircle, ChevronDown } from 'lucide-react';
+
+const faqs = [
+  { q: "What does AxeroAI actually build?", a: "We build the intelligence layer for digital products. This includes autonomous browser agents, high-throughput automation pipelines, and specialized AI-driven SaaS platforms." },
+  { q: "Is AxeroAI an AI research lab or a product company?", a: "Both. We maintain Axero Labs for frontier R&D, but our primary focus is engineering production-grade products that solve enterprise-scale problems." },
+  { q: "Can I integrate AxeroAI systems into my existing stack?", a: "Yes. Most of our tools are built with an API-first philosophy, allowing for seamless integration into modern cloud environments." },
+  { q: "How do you handle data privacy in your AI models?", a: "Privacy is a first-class citizen in our engineering cycle. We use isolated sandboxes for data processing and never train our models on client-sensitive data without explicit, high-level authorization." }
+];
+---
+
+<MainLayout title="FAQ" description="Frequently asked questions about AxeroAI's systems, products, and vision.">
+  <div class="pt-32 pb-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <header class="mb-20 text-center">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 premium-gradient-text">General FAQ</h1>
+        <p class="text-xl text-on-surface-variant font-light">Transparent answers to common technical and company inquiries.</p>
+      </header>
+
+      <div class="space-y-6">
+        {faqs.map(faq => (
+          <div class="premium-card group">
+            <details class="group">
+              <summary class="list-none flex items-center justify-between cursor-pointer">
+                <h3 class="text-xl font-bold group-hover:text-primary transition-colors pr-8 leading-tight">{faq.q}</h3>
+                <ChevronDown size={20} className="text-on-surface-variant group-open:rotate-180 transition-transform" />
+              </summary>
+              <div class="pt-6 mt-6 border-t border-outline">
+                 <p class="text-on-surface-variant font-light leading-relaxed">
+                   {faq.a}
+                 </p>
+              </div>
+            </details>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-24 p-12 bg-surface/50 border border-outline rounded-3xl text-center space-y-6">
+         <HelpCircle size={40} className="text-primary mx-auto opacity-50" />
+         <h4 class="text-2xl font-bold">Still have questions?</h4>
+         <p class="text-on-surface-variant font-light">Our engineering team is ready to provide technical deep dives.</p>
+         <a href="/contact" class="premium-button premium-button-primary">Contact Engineering</a>
+      </div>
+    </div>
+  </div>
+</MainLayout>

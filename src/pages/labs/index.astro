@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import { FlaskConical, Beaker, Terminal, Cpu, Plus } from 'lucide-react';
+
+const labs = (await getCollection('labs')).sort(
+  (a, b) => (a.data.order || 0) - (b.data.order || 0)
+);
+
+const icons = [FlaskConical, Beaker, Terminal, Cpu];
+---
+
+<MainLayout title="Labs & Experiments" description="The workbench of the future. Experimental models, unpolished interfaces, and unstable agents.">
+  <div class="pt-32 pb-24 px-6 overflow-hidden bg-[#050505]">
+    <div class="max-w-7xl mx-auto">
+      <header class="mb-32 text-center max-w-4xl mx-auto space-y-8">
+        <div class="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-white text-[10px] font-mono uppercase tracking-widest font-black">
+           Experimental Neural Workbench
+        </div>
+        <h1 class="text-6xl md:text-8xl font-black premium-gradient-text tracking-tighter leading-none">Axero <br/> <span class="text-white">Foundry.</span></h1>
+        <p class="text-xl text-zinc-500 font-light max-w-2xl mx-auto leading-relaxed">
+          The R&D layer for frontier intelligence. We explore radical interaction models and novel cognitive applications before they mature into products.
+        </p>
+      </header>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        {labs.map((lab, i) => {
+          const Icon = icons[i % icons.length];
+          return (
+            <div class="premium-card group relative overflow-hidden bg-zinc-950/50 hover:bg-zinc-900 transition-all border-white/5 hover:border-white/20">
+              <div class="relative z-10 space-y-10 p-4">
+                <div class="flex items-center justify-between">
+                   <div class="w-16 h-16 rounded-2xl bg-zinc-900 border border-outline flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-zinc-800 transition-all duration-500">
+                      <Icon size={28} />
+                   </div>
+                   <div class="px-3 py-1 bg-white/10 border border-white/10 rounded-full text-white text-[10px] font-mono uppercase tracking-widest font-black animate-pulse">
+                     {lab.data.status}
+                   </div>
+                </div>
+
+                <div class="space-y-4">
+                  <h3 class="text-3xl font-black group-hover:text-white transition-colors">{lab.data.title}</h3>
+                  <p class="text-zinc-500 font-light leading-relaxed text-sm">
+                    {lab.data.description}
+                  </p>
+                </div>
+
+                <div class="pt-8 border-t border-white/5 flex items-center justify-between">
+                   <span class="text-[10px] font-mono text-zinc-600 font-black uppercase tracking-widest">Process ID: 00{i+1}</span>
+                   <button class="text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">Access Neural Link</button>
+                </div>
+              </div>
+            </div>
+          )
+        })}
+
+        <!-- Placeholder for next -->
+        <div class="premium-card bg-transparent border-dashed border-zinc-800 flex flex-col items-center justify-center text-center p-12 opacity-40">
+           <div class="w-16 h-16 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 mb-6 group-hover:border-white/20 transition-all">
+              <Plus size={24} />
+           </div>
+           <span class="text-[10px] font-black uppercase tracking-widest text-zinc-600">Scheduling Neural Test Cycle...</span>
+        </div>
+      </div>
+      
+      <div class="mt-32 p-12 bg-surface/50 border border-outline rounded-3xl text-center max-w-3xl mx-auto space-y-6">
+         <h4 class="text-2xl font-bold">System Warning</h4>
+         <p class="text-on-surface-variant font-light text-sm italic">
+           All experiments in the Workbench are subject to instant termination. Documentation is sparse. Outcomes are unpredictable. Proceed with scientific curiosity.
+         </p>
+      </div>
+    </div>
+  </div>
+</MainLayout>

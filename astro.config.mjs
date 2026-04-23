@@ -1,4 +1,5 @@
 import react from '@astrojs/react';
+import mdx from '@astrojs/mdx';
 import tailwind from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
@@ -7,7 +8,9 @@ const env = loadEnv(process.env.NODE_ENV || 'development', '.', '');
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
+  site: 'https://axero.ai',
+  output: 'static',
+  integrations: [react(), mdx()],
   devToolbar: {
     enabled: false,
   },
