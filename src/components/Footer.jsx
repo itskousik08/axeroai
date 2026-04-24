@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Twitter, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import AxeroLogo from './AxeroLogo';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -57,8 +58,8 @@ const Footer = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 mb-24"
         >
           <motion.div variants={itemVariants} className="lg:col-span-2 space-y-10">
-            <a href="/" className="text-3xl font-display font-extrabold tracking-tighter text-white block">
-              Axero<span className="text-primary">AI</span>
+            <a href="/" className="block group">
+              <AxeroLogo size={180} className="!justify-start" />
             </a>
             <p className="text-base text-on-surface-variant font-light leading-relaxed max-w-sm">
               Architecting cognitive infrastructure for the decentralized era. We build autonomous systems that reason, plan, and execute with precision.

@@ -1,6 +1,6 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import Hero from '../components/Hero.astro';
+import AxeroHero3D from '../components/AxeroHero3D';
 import StatsStrip from '../components/StatsStrip';
 import Capabilities from '../components/Capabilities';
 import Methodology from '../components/Methodology';
@@ -35,7 +35,7 @@ const blogPosts = (await getCollection('blog'))
        <div class="absolute bottom-[20%] -right-[10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[240px] animate-pulse-slow [animation-delay:2s]"></div>
     </div>
 
-    <Hero />
+    <AxeroHero3D client:load />
 
     <!-- 2. Trust Bar -->
     <MotionSection client:visible direction="down" delay={0.2} className="border-y border-outline py-10 bg-surface/20 backdrop-blur-md overflow-hidden relative z-10">

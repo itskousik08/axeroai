@@ -51,4 +51,18 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { blog, products, labs, pages };
+// News Collection
+const news = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/news" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.string(),
+    author: z.string().optional(),
+    readTime: z.string().optional(),
+    category: z.string().default('General'),
+    image: z.string().optional(),
+  }),
+});
+
+export const collections = { blog, products, labs, pages, news };
