@@ -46,7 +46,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="pt-32 pb-12 border-t border-outline relative overflow-hidden">
+    <footer className="pt-32 pb-12 border-t border-outline relative overflow-hidden px-[30px]">
       <div className="grid-bg opacity-10"></div>
       
       <div className="max-w-7xl mx-auto px-6 md:px-10">

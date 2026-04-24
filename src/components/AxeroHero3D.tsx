@@ -163,7 +163,7 @@ export default function AxeroHero3D() {
           </div>
 
           <div className="mb-8">
-            <AxeroLogo size={82} className="drop-shadow-[0_0_50px_rgba(255,255,255,0.4)]" />
+            <AxeroLogo size={420} className="drop-shadow-[0_0_60px_rgba(255,255,255,0.3)]" />
           </div>
           
           <p className="max-w-2xl text-lg md:text-xl text-white/50 mb-12 font-light leading-relaxed tracking-wide px-4">
