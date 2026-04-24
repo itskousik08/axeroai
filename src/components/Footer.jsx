@@ -59,7 +59,7 @@ const Footer = () => {
         >
           <motion.div variants={itemVariants} className="lg:col-span-2 space-y-10">
             <a href="/" className="block group">
-              <AxeroLogo size={180} className="!justify-start" />
+              <AxeroLogo size={52} className="!items-start" />
             </a>
             <p className="text-base text-on-surface-variant font-light leading-relaxed max-w-sm">
               Architecting cognitive infrastructure for the decentralized era. We build autonomous systems that reason, plan, and execute with precision.

@@ -39,7 +39,7 @@ const Header = () => {
           href="/" 
           className="flex items-center gap-2.5 group hover:opacity-80 transition-opacity"
         >
-          <AxeroLogo size={140} />
+          <AxeroLogo size={24} vertical={false} />
           <div className="hidden sm:flex px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-[8px] font-mono font-bold text-primary uppercase tracking-widest mt-1">
             Build 025.A
           </div>
