@@ -46,8 +46,8 @@ export default function StatsStrip() {
       <div className="grid-bg opacity-30"></div>
       <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0 lg:divide-x lg:divide-outline">
-          {stats.map((stat, i) => (
-            <StatItem key={i} stat={stat} />
+          {stats.map((stat) => (
+            <StatItem key={stat.label} stat={stat} />
           ))}
         </div>
       </div>

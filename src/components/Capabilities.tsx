@@ -25,8 +25,8 @@ export default function Capabilities() {
             
             <div className="pt-10 hidden lg:block">
                <div className="flex flex-col gap-4">
-                  {units.map((u, i) => (
-                    <div key={i} className="flex items-center gap-4 group cursor-default">
+                  {units.map((u) => (
+                    <div key={u.id} className="flex items-center gap-4 group cursor-default">
                        <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary transition-all group-hover:scale-150"></div>
                        <span className="font-mono text-xs text-on-surface-muted group-hover:text-white transition-colors">{u.title}</span>
                     </div>
@@ -38,7 +38,7 @@ export default function Capabilities() {
           <div className="space-y-8">
             {units.map((unit, i) => (
               <motion.div
-                key={i}
+                key={unit.id}
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}

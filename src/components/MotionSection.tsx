@@ -18,7 +18,7 @@ export default function MotionSection({
 }: MotionSectionProps) {
   if (noReveal) return <div className={className}>{children}</div>;
 
-  const variants = {
+  const variants: any = {
     hidden: { 
       opacity: 0, 
       y: direction === 'up' ? 30 : direction === 'down' ? -30 : 0,

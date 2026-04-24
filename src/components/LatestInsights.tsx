@@ -4,7 +4,8 @@ import { ArrowRight, Clock } from 'lucide-react';
 import PremiumCard from './PremiumCard';
 
 interface Post {
-  slug: string;
+  id: string;
+  slug?: string;
   data: {
     title: string;
     description: string;
@@ -48,14 +49,14 @@ export default function LatestInsights({ posts }: LatestInsightsProps) {
         <div className="grid lg:grid-cols-3 gap-6">
           {posts.map((post, i) => (
             <motion.div
-              key={post.slug}
+              key={post.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
               className={i === 0 ? 'lg:col-span-2' : ''}
             >
-              <a href={`/blog/${post.slug}`} className="block h-full group">
+              <a href={`/blog/${post.slug || post.id}`} className="block h-full group">
                 <PremiumCard className="!p-0 h-full flex flex-col overflow-hidden">
                   <div className={`relative overflow-hidden border-b border-outline ${i === 0 ? 'aspect-[21/9]' : 'aspect-video'}`}>
                      <motion.img 
