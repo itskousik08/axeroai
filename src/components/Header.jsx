@@ -15,13 +15,18 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const [activePath, setActivePath] = useState('');
+
+  useEffect(() => {
+    setActivePath(window.location.pathname);
+  }, []);
+
   const navLinks = [
-    { label: 'Products', href: '/products' },
-    { label: 'Research', href: '/labs' },
-    { label: 'Intelligence', href: '/blog' },
+    { label: 'Projects', href: '/projects' },
+    { label: 'Research', href: '/research' },
     { label: 'News', href: '/news' },
-    { label: 'Company', href: '/company' },
-    { label: 'FAQ', href: '/faq' }
+    { label: 'Labs', href: '/labs' },
+    { label: 'Company', href: '/company' }
   ];
 
   return (
@@ -47,17 +52,21 @@ const Header = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-10">
-          {navLinks.slice(0, 4).map((link, i) => (
+          {navLinks.slice(0, 5).map((link, i) => (
             <motion.a
               key={link.label}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               href={link.href}
-              className="relative text-sm font-medium text-on-surface-variant hover:text-white transition-colors group px-1 py-1"
+              className={`relative text-sm font-medium transition-colors group px-1 py-1 ${
+                activePath.startsWith(link.href) ? 'text-primary' : 'text-on-surface-variant hover:text-white'
+              }`}
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300"></span>
+              <span className={`absolute bottom-0 left-0 h-[1.5px] bg-primary transition-all duration-300 ${
+                activePath.startsWith(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
             </motion.a>
           ))}
           
@@ -103,7 +112,9 @@ const Header = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
                     href={link.href}
-                    className="block text-2xl font-bold tracking-tight text-white/80 hover:text-primary transition-colors flex items-center justify-between group"
+                    className={`block text-2xl font-bold tracking-tight transition-colors flex items-center justify-between group ${
+                      activePath.startsWith(link.href) ? 'text-primary' : 'text-white/80 hover:text-primary'
+                    }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {link.label}

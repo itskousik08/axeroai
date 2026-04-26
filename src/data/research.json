@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Project Deal: Evaluating Claude's Market Negotiation Skills",
+    "slug": "project-deal",
+    "category": "Interpretabilty",
+    "date": "2026-04-24",
+    "excerpt": "We created a marketplace for employees in our San Francisco office, with one big twist. We tasked Claude with buying, selling and negotiating on our colleagues' behalf.",
+    "content": "This study explores the emergence of strategic negotiation behaviors in large language models. We observe that models can develop sophisticated bargaining strategies without explicit instruction.",
+    "image": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["Negotiation", "Economics", "Agents"]
+  },
+  {
+    "title": "Emotion concepts and their function in a large language model",
+    "slug": "emotion-concepts-llm",
+    "category": "Interpretabilty",
+    "date": "2026-04-02",
+    "excerpt": "All modern language models sometimes act like they have emotions. What's behind these behaviors? Our interpretability team investigates.",
+    "content": "We mapped the internal activations associated with emotional prompts and found distinct topological features that correspond to different affective states.",
+    "image": "https://images.unsplash.com/photo-1620712943543-bcc4628c71d0?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["Psychology", "Interpretability"]
+  },
+  {
+    "title": "Constitutional Classifiers: Defending against universal jailbreaks",
+    "slug": "constitutional-classifiers",
+    "category": "Alignment",
+    "date": "2025-02-03",
+    "excerpt": "These classifiers filter the overwhelming majority of jailbreaks while maintaining practical deployment. A prototype withstood over 3,000 hours of red teaming.",
+    "content": "Our new classification architecture provides a robust defense against adversarial attacks by enforcing categorical constraints derived from human-aligned principles.",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["Safety", "Alignment", "Classifiers"]
+  },
+  {
+    "title": "Vibe physics: The AI grad student",
+    "slug": "vibe-physics",
+    "category": "Science",
+    "date": "2026-03-23",
+    "excerpt": "Exploring how AI models can assist in theoretical physics research by identifying patterns in high-dimensional datasets.",
+    "content": "We demonstrate that LLMs can accurately predict phase transitions in simulated materials by analyzing the 'vibes' of the underlying mathematical structures.",
+    "image": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["Physics", "Science"]
+  },
+  {
+    "title": "Trustworthy agents in practice",
+    "slug": "trustworthy-agents",
+    "category": "Policy",
+    "date": "2026-04-09",
+    "excerpt": "A framework for deploying autonomous agents in high-stakes environments while maintaining human oversight and accountability.",
+    "content": "Our policy brief outlines requirements for the safe integration of AI agents into financial and medical systems.",
+    "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["Policy", "Ethics", "Deployment"]
+  }
+]

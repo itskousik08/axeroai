@@ -1,0 +1,67 @@
+[
+  {
+    "title": "DM Automator",
+    "slug": "dm-automator",
+    "category": "Automation",
+    "status": "Active",
+    "shortDescription": "A Meta Graph API suite for automated, high-fidelity messaging pipelines.",
+    "fullDescription": "DM Automator is a specialized enterprise-grade tool for managing high-volume messaging at scale. Built on the Meta Graph API, it provides robust automation for customer engagement, lead nurturing, and personalized communication workflows with built-in compliance and rate-limiting handles.",
+    "tags": ["Node.js", "Meta API", "Redis", "Enterprise"],
+    "link": "https://axero.ai/products/dm-automator",
+    "featured": true,
+    "createdAt": "2024-01-15T10:00:00Z",
+    "iconName": "MessageSquare"
+  },
+  {
+    "title": "PromTix",
+    "slug": "promtix",
+    "category": "Ticketing",
+    "status": "Beta",
+    "shortDescription": "Decentralized event infrastructure for the modern creator economy.",
+    "fullDescription": "PromTix redefines event management by leveraging decentralized sovereign identity and secure digital ticketing. It eliminates fraud while providing creators with direct-to-fan engagement tools and programmatic secondary market controls.",
+    "tags": ["Blockchain", "Web3", "Next.js", "Sovereign ID"],
+    "link": "https://axero.ai/products/promtix",
+    "featured": true,
+    "createdAt": "2024-02-20T10:00:00Z",
+    "iconName": "Ticket"
+  },
+  {
+    "title": "Zenthous",
+    "slug": "zenthous",
+    "category": "AI Research",
+    "status": "In Development",
+    "shortDescription": "Cognitive modeling for distributed autonomous agents.",
+    "fullDescription": "Zenthous is our flagship research project focusing on multi-agent reinforcement learning in complex, high-stakes environments. It aims to bridge the gap between reactive systems and proactive cognitive agents for industrial applications.",
+    "tags": ["AI", "PyTorch", "Rust", "Multi-Agent"],
+    "link": "https://axero.ai/products/zenthous",
+    "featured": true,
+    "createdAt": "2024-03-05T10:00:00Z",
+    "iconName": "Cpu"
+  },
+  {
+    "title": "Axero Core",
+    "slug": "axero-core",
+    "category": "Infrastructure",
+    "status": "Active",
+    "shortDescription": "The backbone of the Axero ecosystem, managing identity and flow.",
+    "fullDescription": "Axero Core provides the foundational infrastructure for all our systems. It handles cross-protocol verification, secure data transit, and the unified control plane that powers our entire product suite.",
+    "tags": ["Go", "gRPC", "Kubernetes", "Security"],
+    "link": "https://axero.ai/products/axero-core",
+    "featured": true,
+    "createdAt": "2024-04-10T10:00:00Z",
+    "iconName": "Network"
+  },
+  {
+    "title": "Nexus Stream",
+    "slug": "nexus-stream",
+    "category": "Data Flow",
+    "status": "In Development",
+    "shortDescription": "Real-time semantic data processing for infinite scalability.",
+    "fullDescription": "Nexus Stream is a specialized data pipeline architected for real-time semantic analysis. It transforms raw industrial data into structured, actionable insights using low-latency edge processing.",
+    "tags": ["Kafka", "Apache Flink", "Python", "Edge Computing"],
+    "link": "https://axero.ai/products/nexus-stream",
+    "featured": false,
+    "createdAt": "2024-04-15T10:00:00Z",
+    "iconName": "Activity"
+  }
+]

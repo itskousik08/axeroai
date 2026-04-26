@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Introducing Axero Opus 4.7",
+    "slug": "introducing-axero-opus-4-7",
+    "category": "Product",
+    "date": "2026-04-16",
+    "excerpt": "Our latest Opus model brings stronger performance across coding, agents, vision, and multi-step tasks, with greater thoroughness and consistency on the work that matters most.",
+    "content": "Today, we are thrilled to announce the release of Axero Opus 4.7, our most advanced large language model to date. Opus 4.7 represents a significant leap forward in reasoning capabilities, agentic behavior, and multimodal understanding.\n\nKey enhancements include:\n- 40% improvement in complex coding tasks\n- Enhanced visual reasoning for technical diagrams\n- Long-context window support up to 2 million tokens\n- Improved reliability in multi-step agent workflows\n\nExperience Opus 4.7 starting today in the Axero Console.",
+    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["AI", "Opus", "Release"]
+  },
+  {
+    "title": "Axero and NEC collaborate to build Japan's largest AI engineering workforce",
+    "slug": "axero-nec-collaboration-japan",
+    "category": "Announcements",
+    "date": "2026-04-24",
+    "excerpt": "A new initiative to bring together Japan's leading technology companies and build a robust AI ecosystem through specialized training and infrastructure.",
+    "content": "AxeroAI is proud to announce a strategic partnership with NEC Corporation to accelerate AI adoption across Japan. This collaboration focuses on training the next generation of AI engineers and deploying sovereign AI solutions tailored for Japanese enterprise needs.",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["Partnership", "Japan", "Education"]
+  },
+  {
+     "title": "Project Glasswing: Infrastructure for the World's Most Critical Software",
+     "slug": "project-glasswing",
+     "category": "Announcements",
+     "date": "2026-04-07",
+     "excerpt": "A new initiative that brings together cloud providers and security firms to secure the software supply chain.",
+     "content": "Project Glasswing is our commitment to open-source security. By providing automated formal verification tools to critical infrastructure projects, we aim to eliminate entire classes of vulnerabilities.",
+     "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=1000",
+     "tags": ["Security", "Infrastructure", "Open Source"]
+  },
+  {
+    "title": "What 81,000 people want from AI",
+    "slug": "what-81000-people-want-from-ai",
+    "category": "News",
+    "date": "2026-03-18",
+    "excerpt": "Nearly 81,000 people participated in the largest and most multilingual qualitative study of its kind. Here’s what we found.",
+    "content": "Our global survey reveals a deep desire for AI that acts as a collaborative partner rather than a replacement. Users across 140 countries highlighted the need for transparency and agency.",
+    "image": "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["Research", "Safety", "Global"]
+  },
+  {
+    "title": "Axero is a space to think",
+    "slug": "axero-is-a-space-to-think",
+    "category": "Announcements",
+    "date": "2026-02-04",
+    "excerpt": "We’ve made a choice: Axero will remain ad-free. We explain why advertising incentives are incompatible with a genuinely helpful AI assistant.",
+    "content": "Our mission is to build alignment between human values and machine intelligence. Advertising creates misaligned incentives that degrade the quality of thought.",
+    "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["Mission", "Ethics"]
+  }
+]

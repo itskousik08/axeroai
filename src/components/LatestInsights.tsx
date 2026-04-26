@@ -22,7 +22,7 @@ interface LatestInsightsProps {
 
 export default function LatestInsights({ posts }: LatestInsightsProps) {
   return (
-    <section id="blog" className="py-40 relative">
+    <section id="news" className="py-40 relative">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
           <motion.div 
@@ -32,16 +32,16 @@ export default function LatestInsights({ posts }: LatestInsightsProps) {
             className="space-y-6"
           >
             <div className="section-label">Intelligence Brief</div>
-            <h2 className="text-5xl md:text-8xl font-extrabold tracking-tighter leading-none">From the Lab</h2>
+            <h2 className="text-5xl md:text-8xl font-extrabold tracking-tighter leading-none">News & Research</h2>
           </motion.div>
           <motion.a 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            href="/blog" 
+            href="/news" 
             className="group flex items-center gap-3 text-on-surface-variant hover:text-white transition-all text-sm font-medium"
           >
-            View Full Publication
+            View All Reports
             <ArrowRight size={20} className="transition-transform group-hover:translate-x-2" />
           </motion.a>
         </div>
@@ -56,7 +56,7 @@ export default function LatestInsights({ posts }: LatestInsightsProps) {
               transition={{ delay: i * 0.15 }}
               className={i === 0 ? 'lg:col-span-2' : ''}
             >
-              <a href={`/blog/${post.slug || post.id}`} className="block h-full group">
+              <a href={`/news/${post.slug || post.id}`} className="block h-full group">
                 <PremiumCard className="!p-0 h-full flex flex-col overflow-hidden">
                   <div className={`relative overflow-hidden border-b border-outline ${i === 0 ? 'aspect-[21/9]' : 'aspect-video'}`}>
                      <motion.img 
@@ -78,8 +78,6 @@ export default function LatestInsights({ posts }: LatestInsightsProps) {
                       <div className="flex items-center gap-2 font-mono text-[10px] text-on-surface-muted uppercase tracking-widest">
                         <Clock size={12} />
                         {(post.data.publishDate || post.data.date)?.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                        <span className="mx-2 opacity-20">/</span>
-                        <span>8 min read</span>
                       </div>
                       <h3 className={`font-bold tracking-tight group-hover:text-primary transition-colors ${i === 0 ? 'text-4xl' : 'text-2xl'}`}>
                         {post.data.title}

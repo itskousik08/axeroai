@@ -1,0 +1,73 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PremiumCard from '../../components/PremiumCard';
+import IconRenderer from '../../components/IconRenderer';
+import projectsData from '../../data/projects.json';
+import { ArrowUpRight } from 'lucide-react';
+
+const sortedProjects = projectsData.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+---
+
+<MainLayout title="Project Ecosystem | AxeroAI" description="Explore the AxeroAI deployment catalog and product ecosystem.">
+  <main class="relative bg-background pt-32 pb-40">
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute top-0 right-0 w-[50%] h-[50%] bg-primary/5 rounded-full blur-[200px]"></div>
+        <div class="absolute bottom-0 left-0 w-[50%] h-[50%] bg-primary/2 rounded-full blur-[200px]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
+      <header class="mb-20">
+        <div class="section-label mb-6">Deployment Catalog</div>
+        <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-8">Selected Projects</h1>
+        <p class="text-xl text-on-surface-variant font-light max-w-2xl leading-relaxed">
+          Our technical fleet of autonomous systems, infrastructure protocols, and cognitive interfaces designed for the decentralized frontier.
+        </p>
+      </header>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedProjects.map(project => (
+          <div class="group h-full">
+            <PremiumCard client:visible className="h-full flex flex-col justify-between !rounded-[2rem]">
+              <div class="space-y-8">
+                <div class="flex justify-between items-start">
+                  <div class="w-14 h-14 rounded-2xl bg-surface-accent flex items-center justify-center text-primary border border-outline">
+                    <IconRenderer client:load iconName={project.iconName} size={28} />
+                  </div>
+                  <span class={`font-mono text-[10px] px-3 py-1 rounded-full uppercase tracking-widest font-bold border ${
+                    project.status === 'Active' ? 'text-primary border-primary/30 bg-primary/5' : 
+                    project.status === 'Beta' ? 'text-orange-400 border-orange-400/30 bg-orange-400/5' : 
+                    'text-on-surface-muted border-outline bg-surface/50'
+                  }`}>
+                    {project.status}
+                  </span>
+                </div>
+                
+                <div>
+                  <div class="text-xs font-mono text-primary mb-2 uppercase tracking-widest">{project.category}</div>
+                  <h3 class="text-3xl font-bold mb-4">{project.title}</h3>
+                  <p class="text-on-surface-variant font-light leading-relaxed mb-6">
+                    {project.shortDescription}
+                  </p>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  {project.tags.map(tag => (
+                    <span class="text-[10px] font-mono text-on-surface-muted bg-surface/50 border border-outline px-2 py-0.5 rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div class="pt-8 mt-8 border-t border-outline">
+                <a href={`/projects/${project.slug}`} class="premium-button premium-button-primary w-full text-center group-hover:scale-[1.02] transition-transform">
+                  Explore Project
+                </a>
+              </div>
+            </PremiumCard>
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+</MainLayout>

@@ -1,36 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-// Blog / Insights Collection
-const blog = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/blog" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    publishDate: z.coerce.date(),
-    category: z.string(),
-    image: z.string().optional(),
-    author: z.string().default('AxeroAI'),
-    featured: z.boolean().default(false),
-    tags: z.array(z.string()).default([]),
-  }),
-});
-
-// Products Collection
-const products = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/products" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    status: z.enum(['Active', 'In Development', 'Beta', 'Archived']),
-    category: z.string(),
-    image: z.string().optional(),
-    featured: z.boolean().default(false),
-    tech: z.array(z.string()).default([]),
-    link: z.string().optional(),
-  }),
-});
-
 // Labs / Experiments Collection
 const labs = defineCollection({
   loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/labs" }),
@@ -57,7 +27,7 @@ const news = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    date: z.string(),
+    date: z.coerce.date(),
     author: z.string().optional(),
     readTime: z.string().optional(),
     category: z.string().default('General'),
@@ -65,4 +35,19 @@ const news = defineCollection({
   }),
 });
 
-export const collections = { blog, products, labs, pages, news };
+// Research Collection
+const research = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/research" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.coerce.date(),
+    category: z.string(),
+    author: z.string().default('AxeroAI Research'),
+    featured: z.boolean().default(false),
+    image: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { labs, pages, news, research };

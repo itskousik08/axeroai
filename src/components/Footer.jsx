@@ -8,21 +8,19 @@ const Footer = () => {
 
   const footerLinks = {
     Ecosystem: [
-      { name: 'Lumina AI', href: '#' },
-      { name: 'Nexus Core', href: '#' },
-      { name: 'MotionStudio', href: '#' },
-      { name: 'Aether ↗', href: '#' },
+      { name: 'Featured Projects', href: '/projects' },
+      { name: 'Research Hub', href: '/research' },
+      { name: 'Axero Labs', href: '/labs' },
+      { name: 'DM Automator', href: '/projects/dm-automator' },
     ],
     Foundry: [
-      { name: 'Labs', href: '/labs' },
+      { name: 'Intelligence News', href: '/news' },
       { name: 'Technical Docs', href: '#' },
       { name: 'System Status', href: '#' },
-      { name: 'Build Log', href: '#' },
     ],
     Company: [
       { name: 'About', href: '#' },
       { name: 'Philosophy', href: '#' },
-      { name: 'Blog', href: '/blog' },
       { name: 'Careers', href: '#' },
       { name: 'Contact', href: '/contact' },
     ]

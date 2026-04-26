@@ -1,73 +1,159 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
-import { getCollection } from 'astro:content';
-import { ChevronRight, Calendar, Tag, Clock } from 'lucide-react';
+import newsData from '../../data/news.json';
+import { Search, Mail, Download, ArrowRight, ChevronRight, Share2 } from 'lucide-react';
 
-const newsEntries = await getCollection('news');
-const newsItems = newsEntries.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const featuredNews = newsData[0];
+const announcements = newsData.slice(1, 4);
+const allNews = newsData;
+
+// For the search functionality (client-side usually, but for Astro we can do a simple filter if needed, 
+// though here I'll stick to a clean UI as requested)
 ---
 
-<MainLayout title="News" description="The latest updates and insights from the team at AXEROAI. Explore our AI research and model releases.">
-  <section class="pt-32 pb-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mb-16">
-        <h1 class="text-5xl font-bold text-gray-900 mb-6 tracking-tight">News & Research</h1>
-        <p class="text-xl text-gray-600 leading-relaxed">
-          Deep dives into AI research, model releases, and our mission to build safe intelligence.
-        </p>
-      </div>
+<MainLayout title="Newsroom" description="The latest updates and announcements from AxeroAI.">
+  <div class="relative min-h-screen bg-background">
+    <!-- Grid Overlay -->
+    <div class="absolute inset-0 grid-bg opacity-30"></div>
 
-      <div class="grid md:grid-cols-2 gap-12">
-        {newsItems.map((item) => (
-          <article class="group flex flex-col">
-            <a href={`/news/${item.id}`} class="block aspect-[16/9] mb-6 overflow-hidden rounded-2xl border border-gray-200">
-              <img 
-                src={item.data.image} 
-                alt={`Featured image for ${item.data.title}`} 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                referrerPolicy="no-referrer"
-              />
-            </a>
-            <div class="flex items-center space-x-4 mb-4 text-xs text-gray-500">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#4F46E5]/10 text-[#4F46E5] border border-[#4F46E5]/20">
-                <Tag className="w-3 h-3 mr-1" aria-hidden="true" />
-                {item.data.category}
-              </span>
-              <span class="flex items-center">
-                <Calendar className="w-3 h-3 mr-1" aria-hidden="true" />
-                {item.data.date}
-              </span>
-              {item.data.readTime && (
-                <span class="flex items-center">
-                  <Clock className="w-3 h-3 mr-1" aria-hidden="true" />
-                  {item.data.readTime}
-                </span>
-              )}
-            </div>
-            <h2 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#4F46E5] transition-colors">
-              <a href={`/news/${item.id}`}>{item.data.title}</a>
-            </h2>
-            <p class="text-gray-600 mb-4 leading-relaxed">
-              {item.data.description}
+    <main class="relative z-10 pt-32 pb-24 max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        <!-- Sidebar/Contact -->
+        <div class="lg:col-span-4 space-y-12">
+          <div>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8">Newsroom</h1>
+            <p class="text-on-surface-variant text-lg leading-relaxed max-w-md">
+              The latest updates, product releases, and strategic insights from the AxeroAI ecosystem.
             </p>
-            <div class="flex items-center justify-between mt-auto">
-              <div class="flex items-center space-x-2">
-                {item.data.author && (
-                  <>
-                    <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-900">
-                      {item.data.author.split(' ').map(n => n[0]).join('')}
-                    </div>
-                    <span class="text-sm font-medium text-gray-900">{item.data.author}</span>
-                  </>
-                )}
-              </div>
-              <a href={`/news/${item.id}`} class="text-[#4F46E5] font-semibold flex items-center group-hover:translate-x-1 transition-transform" aria-label={`Read more about ${item.data.title}`}>
-                Read more <ChevronRight className="ml-1 w-4 h-4" aria-hidden="true" />
+          </div>
+
+          <div class="space-y-8 pt-8 border-t border-outline">
+            <div class="space-y-2">
+              <h3 class="text-sm font-mono uppercase tracking-widest text-on-surface-muted">Press inquiries</h3>
+              <a href="mailto:press@axero.ai" class="flex items-center gap-2 text-on-surface hover:text-primary transition-colors">
+                <Mail size={16} />
+                <span>press@axero.ai</span>
               </a>
             </div>
-          </article>
-        ))}
+
+            <div class="space-y-2">
+              <h3 class="text-sm font-mono uppercase tracking-widest text-on-surface-muted">Non-media inquiries</h3>
+              <a href="mailto:support@axero.ai" class="flex items-center gap-2 text-on-surface hover:text-primary transition-colors">
+                <Mail size={16} />
+                <span>support@axero.ai</span>
+              </a>
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-sm font-mono uppercase tracking-widest text-on-surface-muted">Media assets</h3>
+              <a href="#" class="flex items-center gap-2 text-on-surface hover:text-primary transition-colors font-mono text-xs">
+                <Download size={14} />
+                <span>Download press kit</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="lg:col-span-8 space-y-20">
+          <!-- Featured News -->
+          {featuredNews && (
+            <article class="group">
+              <a href={`/news/${featuredNews.slug}`} class="block space-y-8">
+                <div class="aspect-[16/9] overflow-hidden rounded-2xl bg-surface border border-outline relative">
+                  <img 
+                    src={featuredNews.image} 
+                    alt={featuredNews.title} 
+                    class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3 text-sm font-mono uppercase tracking-widest">
+                    <span class="text-primary">{featuredNews.category}</span>
+                    <span class="text-on-surface-muted">•</span>
+                    <span class="text-on-surface-muted">{new Date(featuredNews.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                  </div>
+                  <h2 class="text-4xl md:text-5xl font-bold leading-tight group-hover:text-primary transition-colors">
+                    {featuredNews.title}
+                  </h2>
+                  <p class="text-xl text-on-surface-variant leading-relaxed">
+                    {featuredNews.excerpt}
+                  </p>
+                </div>
+              </a>
+            </article>
+          )}
+
+          <!-- Latest Announcements List -->
+          <section class="space-y-12">
+            <h2 class="text-3xl font-bold border-b border-outline pb-4">Latest</h2>
+            <div class="space-y-10">
+              {announcements.map((news) => (
+                <article class="group">
+                  <a href={`/news/${news.slug}`} class="grid grid-cols-1 md:grid-cols-4 gap-4 items-start">
+                    <div class="text-sm font-mono uppercase tracking-widest text-on-surface-muted pt-1">
+                      {new Date(news.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </div>
+                    <div class="md:col-span-3 space-y-2">
+                       <span class="text-xs font-mono uppercase text-primary tracking-widest">{news.category}</span>
+                       <h3 class="text-2xl font-bold group-hover:text-primary transition-colors leading-snug">
+                         {news.title}
+                       </h3>
+                       <p class="text-on-surface-variant leading-relaxed line-clamp-2">
+                         {news.excerpt}
+                       </p>
+                    </div>
+                  </a>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <!-- Search & Full List -->
+          <section class="space-y-12 pt-12 border-t border-outline">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <h2 class="text-3xl font-bold">All News</h2>
+              <div class="relative w-full md:w-80">
+                <Search size={18} class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-muted" />
+                <input 
+                  type="text" 
+                  placeholder="Search news..." 
+                  class="w-full bg-surface border border-outline rounded-full py-2.5 pl-10 pr-4 focus:outline-none focus:border-primary transition-colors text-sm"
+                />
+              </div>
+            </div>
+
+            <div class="grid gap-px bg-outline">
+              {allNews.map((news) => (
+                <a 
+                  href={`/news/${news.slug}`} 
+                  class="group bg-background py-8 hover:bg-surface/30 transition-all px-4 -mx-4 flex items-center justify-between gap-8"
+                >
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-3 text-[10px] font-mono uppercase tracking-widest text-on-surface-muted">
+                      <span>{news.category}</span>
+                      <span>•</span>
+                      <span>{new Date(news.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                    </div>
+                    <h3 class="text-xl font-bold group-hover:text-primary transition-colors">
+                      {news.title}
+                    </h3>
+                  </div>
+                  <ChevronRight size={20} class="text-on-surface-muted group-hover:text-primary transition-colors" />
+                </a>
+              ))}
+            </div>
+
+            <div class="flex justify-center pt-8">
+              <button class="premium-button premium-button-secondary w-full max-w-xs group">
+                See more
+                <ArrowRight size={16} class="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
-  </section>
+    </main>
+  </div>
 </MainLayout>

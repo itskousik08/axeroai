@@ -32,7 +32,7 @@ export default function PublicationHighlights() {
               We don't just build. We define the protocols and principles that guide the next era of digital intelligence.
             </p>
             <div className="pt-6">
-               <a href="/blog" className="premium-button premium-button-secondary gap-3">
+               <a href="/research" className="premium-button premium-button-secondary gap-3">
                   <BookOpen size={18} />
                   View all publications
                </a>
