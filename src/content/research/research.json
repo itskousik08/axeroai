@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Project Deal: Evaluating Claude's Market Negotiation Skills",
+    "slug": "project-deal",
+    "category": "Interpretabilty",
+    "date": "2026-04-24",
+    "excerpt": "We created a marketplace for employees in our San Francisco office, with one big twist.",
+    "image": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["Negotiation", "Economics", "Agents"],
+    "htmlFile": "project-deal.html"
+  },
+  {
+    "title": "Constitutional Classifiers: Defending against universal jailbreaks",
+    "slug": "constitutional-classifiers",
+    "category": "Alignment",
+    "date": "2025-02-03",
+    "excerpt": "These classifiers filter the overwhelming majority of jailbreaks while maintaining practical deployment.",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["Safety", "Alignment", "Classifiers"],
+    "htmlFile": "constitutional-classifiers.html"
+  }
+]

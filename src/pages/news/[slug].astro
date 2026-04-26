@@ -1,6 +1,6 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
-import newsData from '../../data/news.json';
+import newsData from '../../content/news/news.json';
 import { Calendar, Tag, ChevronLeft, Clock, Share2, Globe, Heart } from 'lucide-react';
 
 export async function getStaticPaths() {
@@ -23,6 +23,12 @@ const formatDate = (dateStr) => {
     year: 'numeric'
   });
 };
+
+// Import HTML content string natively in Astro
+// We can use compile-time glob to find the right file or just use a dynamic import if it's treated as a module, 
+// but since it's .html, we can use import.meta.glob with { as: 'raw' }
+const articles = import.meta.glob('../../content/news/articles/*.html', { as: 'raw', eager: true });
+const htmlContent = articles[`../../content/news/articles/${entry.htmlFile}`];
 ---
 
 <MainLayout title={entry.title} description={entry.excerpt}>
@@ -56,18 +62,24 @@ const formatDate = (dateStr) => {
             {entry.excerpt}
           </p>
 
-          {entry.image && (
+          {entry.image ? (
             <div class="aspect-[21/9] rounded-2xl overflow-hidden border border-outline bg-surface mt-12">
               <img src={entry.image} alt={entry.title} class="w-full h-full object-cover" />
             </div>
+          ) : (
+            <div class="mt-12 h-1 bg-outline border-none"></div>
           )}
         </header>
 
         <!-- Content -->
-        <div class="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-p:text-on-surface-variant prose-p:leading-relaxed prose-strong:text-white prose-blockquote:border-primary">
-          {entry.content.split('\n').map(p => (
-            <p>{p}</p>
-          ))}
+        <div class="prose prose-invert prose-lg max-w-none 
+          prose-headings:text-white 
+          prose-p:text-on-surface-variant prose-p:leading-relaxed 
+          prose-strong:text-white 
+          prose-blockquote:border-primary prose-blockquote:bg-surface/30 prose-blockquote:p-6 prose-blockquote:rounded-xl
+          prose-ul:list-disc prose-ul:pl-6 prose-li:mb-2
+          prose-a:text-primary hover:prose-a:underline">
+          <Fragment set:html={htmlContent} />
         </div>
 
         <!-- Tags -->

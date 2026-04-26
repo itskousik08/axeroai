@@ -1,7 +1,7 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
-import newsData from '../../data/news.json';
-import { Search, Mail, Download, ArrowRight, ChevronRight, Share2 } from 'lucide-react';
+import newsData from '../../content/news/news.json';
+import { Search, Mail, Download, ArrowRight, ChevronRight } from 'lucide-react';
 
 const featuredNews = newsData[0];
 const announcements = newsData.slice(1, 4);
@@ -60,14 +60,20 @@ const allNews = newsData;
           {featuredNews && (
             <article class="group">
               <a href={`/news/${featuredNews.slug}`} class="block space-y-8">
-                <div class="aspect-[16/9] overflow-hidden rounded-2xl bg-surface border border-outline relative">
-                  <img 
-                    src={featuredNews.image} 
-                    alt={featuredNews.title} 
-                    class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
-                </div>
+                {featuredNews.image ? (
+                  <div class="aspect-[16/9] overflow-hidden rounded-2xl bg-surface border border-outline relative">
+                    <img 
+                      src={featuredNews.image} 
+                      alt={featuredNews.title} 
+                      class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
+                  </div>
+                ) : (
+                  <div class="aspect-[16/9] rounded-2xl bg-surface/50 border border-outline border-dashed flex items-center justify-center group-hover:border-primary/50 transition-colors">
+                    <span class="text-on-surface-muted font-mono uppercase tracking-widest text-sm">Axero Intelligence</span>
+                  </div>
+                )}
                 <div class="space-y-4">
                   <div class="flex items-center gap-3 text-sm font-mono uppercase tracking-widest">
                     <span class="text-primary">{featuredNews.category}</span>

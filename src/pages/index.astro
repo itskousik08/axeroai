@@ -2,11 +2,12 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import AxeroHero3D from '../components/AxeroHero3D';
 import StatsStrip from '../components/StatsStrip';
+import HomeNews from '../components/HomeNews';
+import HomeResearch from '../components/HomeResearch';
 import Capabilities from '../components/Capabilities';
 import Methodology from '../components/Methodology';
 import Vision from '../components/Vision';
 import PublicationHighlights from '../components/PublicationHighlights';
-import LatestInsights from '../components/LatestInsights';
 import LabsWorkspace from '../components/LabsWorkspace';
 import FinalCTA from '../components/FinalCTA';
 import { getCollection } from 'astro:content';
@@ -25,10 +26,6 @@ const featuredProjects = projectsData
 const labs = (await getCollection('labs'))
   .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
   .slice(0, 6);
-
-const newsItems = (await getCollection('news'))
-  .sort((a, b) => (new Date(b.data.date).getTime() || 0) - (new Date(a.data.date).getTime() || 0))
-  .slice(0, 3);
 ---
 
 <MainLayout title="Systems Intelligence & Cognitive Infrastructure" description="AxeroAI architects high-fidelity autonomous infrastructure and intelligent ecosystems for a decentralized future.">
@@ -64,6 +61,12 @@ const newsItems = (await getCollection('news'))
 
     <!-- 3. Stats Strip -->
     <StatsStrip client:visible />
+
+    <!-- 3.5 Latest Intelligence (News) -->
+    <HomeNews client:visible />
+
+    <!-- 3.7 Research Frontiers -->
+    <HomeResearch client:visible />
 
     <!-- 4. Core Capabilities -->
     <Capabilities client:visible />
@@ -177,9 +180,6 @@ const newsItems = (await getCollection('news'))
 
     <!-- 9. Publications Highights -->
     <PublicationHighlights client:visible />
-
-    <!-- 10. Insights (News) -->
-    <LatestInsights client:visible posts={newsItems} />
 
     <!-- 11. Final CTA (Immersive) -->
     <FinalCTA client:visible />

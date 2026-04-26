@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Introducing Axero Opus 4.7",
+    "slug": "introducing-axero-opus-4-7",
+    "category": "Product",
+    "date": "2026-04-16",
+    "excerpt": "Our latest Opus model brings stronger performance across coding, agents, vision, and multi-step tasks.",
+    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["AI", "Opus", "Release"],
+    "htmlFile": "introducing-axero-opus-4-7.html"
+  },
+  {
+    "title": "Axero and NEC collaborate to build Japan's largest AI engineering workforce",
+    "slug": "axero-nec-collaboration-japan",
+    "category": "Announcements",
+    "date": "2026-04-24",
+    "excerpt": "A new initiative to build a robust AI ecosystem through specialized training and infrastructure.",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1000",
+    "tags": ["Partnership", "Japan", "Education"],
+    "htmlFile": "axero-nec-collaboration-japan.html"
+  }
+]
